@@ -30,8 +30,9 @@ Thumbs.db
 *.temp
 
 # Video files (large files)
-video/hero-video.mp4
+# Allow hero-video.mp4 but exclude other videos
 video/*.mp4
+!video/hero-video.mp4
 *.mov
 *.avi
 *.webm
