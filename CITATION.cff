@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: "UPASANA"
+    given-names: "Project Team"
+title: "UPASANA - Integrated Yoga, Meditation & Cultural Education Centre Landing Page"
+version: 1.0.0
+date-released: 2026-04-08
+url: "https://github.com/yourusername/upasana-landing-page"
+repository-code: "https://github.com/yourusername/upasana-landing-page"
+keywords:
+  - yoga
+  - meditation
+  - cultural-education
+  - landing-page
+  - ngo
+  - wellness
+  - indian-classical-music
+  - preventive-healthcare
+license: MIT
+abstract: "A professional landing page for UPASANA, an integrated centre for yoga, meditation, and cultural education dedicated to preventive healthcare, holistic development, and preservation of India's timeless wisdom traditions."
