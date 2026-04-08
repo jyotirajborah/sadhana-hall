@@ -195,7 +195,22 @@
             color: var(--gold);
             margin-bottom: 2rem;
             opacity: 0;
-            animation: fadeInUp 1.2s ease forwards 0.3s;
+            animation: fadeInUp 1.2s ease forwards 1.2s;
+            min-height: 1.5rem;
+            font-weight: 500;
+            --cursor-display: inline;
+        }
+
+        .hero-subtitle::after {
+            content: '|';
+            animation: blink 0.7s infinite;
+            margin-left: 2px;
+            display: var(--cursor-display, inline);
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
         }
 
         .hero h1 {
@@ -1001,9 +1016,9 @@
         <div class="hero-bg" id="heroFallback"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <div class="hero-subtitle">Education | Preventive Healthcare | Cultural Preservation</div>
             <h1>UPASANA</h1>
             <p class="hero-tagline">Integrated Yoga, Meditation & Cultural Education Centre</p>
+            <div class="hero-subtitle" id="typingText"></div>
             <div class="hero-cta">
                 <a href="#" class="btn btn-primary" id="viewGalleryBtn">View Gallery</a>
             </div>
@@ -1389,6 +1404,27 @@
     </div>
 
     <script>
+        // Typing effect for hero subtitle
+        const typingText = document.getElementById('typingText');
+        const textToType = 'Education | Preventive Healthcare | Cultural Preservation';
+        let charIndex = 0;
+
+        function typeText() {
+            if (charIndex < textToType.length) {
+                typingText.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, 80); // Typing speed (80ms per character)
+            } else {
+                // Remove blinking cursor after typing is complete
+                setTimeout(() => {
+                    typingText.style.setProperty('--cursor-display', 'none');
+                }, 500);
+            }
+        }
+
+        // Start typing after page loads and initial animations
+        setTimeout(typeText, 2000);
+
         // Gallery images (excluding chariot.jpeg)
         const galleryImages = [
             'pics/01.jpg',
