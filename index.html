@@ -1862,6 +1862,7 @@
                 if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
                     entry.target.classList.add('counted');
                     animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target); // Stop observing after animation
                 }
             });
         }, { threshold: 0.5 });
