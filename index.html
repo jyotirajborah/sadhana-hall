@@ -1411,7 +1411,7 @@
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem; margin-top: 6rem;">
-                <div class="impact-card reveal" style="text-align: center;">
+                <div class="impact-card reveal focus-card" data-category="education" style="text-align: center; cursor: pointer; transition: transform 0.3s ease;">
                     <svg style="width: 80px; height: 80px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin: 0 auto;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
@@ -1420,7 +1420,7 @@
                         Education
                     </h3>
                 </div>
-                <div class="impact-card reveal" style="text-align: center;">
+                <div class="impact-card reveal focus-card" data-category="health" style="text-align: center; cursor: pointer; transition: transform 0.3s ease;">
                     <svg style="width: 80px; height: 80px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin: 0 auto;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                     </svg>
@@ -1428,7 +1428,7 @@
                         Health
                     </h3>
                 </div>
-                <div class="impact-card reveal" style="text-align: center;">
+                <div class="impact-card reveal focus-card" data-category="philanthropy" style="text-align: center; cursor: pointer; transition: transform 0.3s ease;">
                     <svg style="width: 80px; height: 80px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin: 0 auto;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
@@ -1774,6 +1774,40 @@
                 chariotSpotlight.style.top = (y - 150) + 'px';
             });
         }
+
+        // Focus Area Cards - Show category images
+        const focusImages = {
+            education: [
+                'pics/edu/Title image.png',
+                'pics/edu/1st Short term course.png',
+                'pics/edu/3rd - Identification & promotion of talent.png'
+            ],
+            health: [
+                'pics/health/1st Eye and Dental camps.png',
+                'pics/health/3rd Daily OPD.png',
+                'pics/health/4th Homeopathy.JPG'
+            ],
+            philanthropy: [
+                'pics/philanthropy/31_Uplifting Standards_Title Image_260424.png',
+                'pics/philanthropy/1st Image(Cyclone) _060424.png',
+                'pics/philanthropy/_MG_7611.JPG',
+                'pics/philanthropy/DSC08248.JPG'
+            ]
+        };
+
+        const focusCards = document.querySelectorAll('.focus-card');
+        focusCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                const images = focusImages[category];
+                
+                if (images && images.length > 0) {
+                    currentGalleryImages = images;
+                    currentImageIndex = 0;
+                    showLightbox();
+                }
+            });
+        });
     </script>
 </body>
 </html>
