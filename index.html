@@ -1129,26 +1129,24 @@
     </section>
 
     <!-- Section 2: Governance -->
-    <section class="stats-bar">
-        <div class="stats-container" style="flex-direction: column; gap: 3rem;">
-            <h2 style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: var(--gold); text-align: center; margin: 0;">Credibility and Governance</h2>
-            <div style="display: flex; justify-content: space-around; align-items: center; width: 100%; flex-wrap: wrap; gap: 2rem;">
-                <div class="stat-item reveal">
-                    <div class="stat-number">✓</div>
-                    <div class="stat-label">Registered NGO</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number">✓</div>
-                    <div class="stat-label">12A & 80G Compliant</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number">✓</div>
-                    <div class="stat-label">CSR-1 Registered</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number">✓</div>
-                    <div class="stat-label">Audited Financials Available</div>
-                </div>
+    <section class="stats-bar" style="position: relative; overflow: hidden;">
+        <h2 class="governance-title" style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: var(--gold); text-align: center; margin: 0; position: absolute; top: 50%; left: 100%; transform: translate(0, -50%); transition: left 0.6s ease; white-space: nowrap; z-index: 10; pointer-events: none;">Credibility and Governance</h2>
+        <div class="stats-container" style="flex-direction: row; gap: 2rem;">
+            <div class="stat-item reveal">
+                <div class="stat-number">✓</div>
+                <div class="stat-label">Registered NGO</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">✓</div>
+                <div class="stat-label">12A & 80G Compliant</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">✓</div>
+                <div class="stat-label">CSR-1 Registered</div>
+            </div>
+            <div class="stat-item reveal">
+                <div class="stat-number">✓</div>
+                <div class="stat-label">Audited Financials Available</div>
             </div>
         </div>
     </section>
@@ -1821,6 +1819,22 @@
                 // Position spotlight at cursor
                 chariotSpotlight.style.left = (x - 150) + 'px';
                 chariotSpotlight.style.top = (y - 150) + 'px';
+            });
+        }
+
+        // Governance section hover effect
+        const statsBar = document.querySelector('.stats-bar');
+        const governanceTitle = document.querySelector('.governance-title');
+        
+        if (statsBar && governanceTitle) {
+            statsBar.addEventListener('mouseenter', function() {
+                governanceTitle.style.left = '50%';
+                governanceTitle.style.transform = 'translate(-50%, -50%)';
+            });
+            
+            statsBar.addEventListener('mouseleave', function() {
+                governanceTitle.style.left = '100%';
+                governanceTitle.style.transform = 'translate(0, -50%)';
             });
         }
 
