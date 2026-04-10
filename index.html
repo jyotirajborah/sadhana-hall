@@ -1357,19 +1357,19 @@
 
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-top: 6rem;">
                 <div class="philosophy-card reveal" style="padding: 3rem;">
-                    <div class="philosophy-number" style="color: var(--gold);">6,000+</div>
+                    <div class="philosophy-number counter-number" data-target="6000" style="color: var(--gold);">0+</div>
                     <h3>Meditation Beneficiaries</h3>
                 </div>
                 <div class="philosophy-card reveal" style="padding: 3rem;">
-                    <div class="philosophy-number" style="color: var(--gold);">500+</div>
+                    <div class="philosophy-number counter-number" data-target="500" style="color: var(--gold);">0+</div>
                     <h3>Music Students</h3>
                 </div>
                 <div class="philosophy-card reveal" style="padding: 3rem;">
-                    <div class="philosophy-number" style="color: var(--gold);">50+</div>
+                    <div class="philosophy-number counter-number" data-target="50" style="color: var(--gold);">0+</div>
                     <h3>Community Workshops</h3>
                 </div>
                 <div class="philosophy-card reveal" style="padding: 3rem;">
-                    <div class="philosophy-number" style="color: var(--gold);">50+</div>
+                    <div class="philosophy-number counter-number" data-target="50" style="color: var(--gold);">0+</div>
                     <h3>Certified Instructors</h3>
                 </div>
             </div>
@@ -1828,6 +1828,48 @@
                     document.body.style.overflow = 'hidden';
                     // Show normal cursor in lightbox
                     document.body.style.cursor = 'auto';
+                    cursor.style.display = 'none';
+                    follower.style.display = 'none';
+                    // Start auto-play
+                    startAutoPlay();
+                }
+            });
+        });
+
+        // Counter Animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60fps
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current).toLocaleString() + '+';
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString() + '+';
+                }
+            };
+
+            updateCounter();
+        }
+
+        // Intersection Observer for counter animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    animateCounter(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // Observe all counter numbers
+        document.querySelectorAll('.counter-number').forEach(counter => {
+            counterObserver.observe(counter);
+        });
                     cursor.style.display = 'none';
                     follower.style.display = 'none';
                     // Start auto-play
