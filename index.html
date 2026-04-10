@@ -1803,13 +1803,13 @@
         if (chariotSection && chariotBg && chariotSpotlight && chariotOverlay) {
             chariotSection.addEventListener('mouseenter', function() {
                 chariotSpotlight.style.opacity = '1';
-                chariotBg.style.opacity = '0.9'; // Maximum visibility on hover
+                chariotBg.style.opacity = '0.45'; // Increase by 10% from 0.35 to 0.45
                 chariotOverlay.style.opacity = '0.65'; // Reduce overlay darkness to 65%
             });
 
             chariotSection.addEventListener('mouseleave', function() {
                 chariotSpotlight.style.opacity = '0';
-                chariotBg.style.opacity = '0.15'; // Return to normal
+                chariotBg.style.opacity = '0.35'; // Return to normal
                 chariotOverlay.style.opacity = '1'; // Restore overlay
             });
 
