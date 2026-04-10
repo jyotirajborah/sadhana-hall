@@ -373,6 +373,7 @@
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 4rem;
+            transition: filter 0.6s ease, opacity 0.6s ease;
         }
 
         .stat-item {
@@ -1827,16 +1828,21 @@
 
         // Governance section hover effect
         const governanceTitle = document.querySelector('.governance-title');
+        const statsContainer = document.querySelector('.stats-container');
         
-        if (statsBar && governanceTitle) {
+        if (statsBar && governanceTitle && statsContainer) {
             statsBar.addEventListener('mouseenter', function() {
                 governanceTitle.style.left = '50%';
                 governanceTitle.style.transform = 'translate(-50%, -50%)';
+                statsContainer.style.filter = 'blur(8px)';
+                statsContainer.style.opacity = '0.3';
             });
             
             statsBar.addEventListener('mouseleave', function() {
                 governanceTitle.style.left = '100%';
                 governanceTitle.style.transform = 'translate(0, -50%)';
+                statsContainer.style.filter = 'blur(0)';
+                statsContainer.style.opacity = '1';
             });
         }
 
