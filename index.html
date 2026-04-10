@@ -948,15 +948,69 @@
             to { opacity: 1; }
         }
 
+        /* Section transitions */
+        section {
+            transition: all 0.5s ease;
+        }
+
+        section:hover {
+            transform: scale(1.01);
+        }
+
         .reveal {
             opacity: 0;
-            transform: translateY(60px);
+            transform: translateY(60px) scale(0.95);
             transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+        }
+
+        /* Text Hover Effects */
+        h1, h2, h3, h4, h5, h6, p, li, a, span, div {
+            transition: all 0.3s ease;
+        }
+
+        h1:hover, h2:hover, h3:hover {
+            color: var(--gold);
+            transform: scale(1.02);
+            text-shadow: 0 4px 20px rgba(212, 165, 116, 0.4);
+            cursor: default;
+        }
+
+        p:hover {
+            color: var(--gold);
+            transform: translateX(5px);
+            cursor: default;
+        }
+
+        li:hover {
+            transform: translateX(10px);
+            color: var(--gold);
+        }
+
+        /* Word-by-word hover effect */
+        .word-hover {
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
+        }
+
+        .word-hover:hover {
+            color: var(--gold);
+            transform: translateY(-3px) scale(1.1);
+            text-shadow: 0 5px 15px rgba(212, 165, 116, 0.5);
+        }
+
+        /* Smooth scroll snap */
+        html {
+            scroll-snap-type: y proximity;
+        }
+
+        section {
+            scroll-snap-align: start;
         }
 
         /* Responsive */
@@ -1600,6 +1654,40 @@
 
         reveals.forEach(reveal => {
             revealObserver.observe(reveal);
+        });
+
+        // Word-by-word hover effect
+        function wrapWords() {
+            const textElements = document.querySelectorAll('h1, h2, h3, p:not(.hero-tagline):not(.hero-subtitle), li');
+            
+            textElements.forEach(element => {
+                // Skip if already processed or if it's a button or link
+                if (element.classList.contains('word-wrapped') || 
+                    element.closest('a') || 
+                    element.closest('button') ||
+                    element.id === 'typingText') {
+                    return;
+                }
+                
+                const text = element.textContent;
+                const words = text.split(' ');
+                
+                if (words.length > 1) {
+                    element.innerHTML = words.map(word => 
+                        `<span class="word-hover">${word}</span>`
+                    ).join(' ');
+                    element.classList.add('word-wrapped');
+                }
+            });
+        }
+
+        // Apply word wrapping after page loads
+        setTimeout(wrapWords, 100);
+
+        // Enhanced scroll animations with stagger effect
+        const staggerElements = document.querySelectorAll('.philosophy-card, .program-card, .impact-card, .component-tab');
+        staggerElements.forEach((element, index) => {
+            element.style.transitionDelay = `${index * 0.1}s`;
         });
 
         // Counter animation
