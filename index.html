@@ -90,6 +90,18 @@
             box-shadow: 0 1px 0 rgba(10, 22, 40, 0.05);
         }
 
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--bronze));
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
         .logo {
             font-family: 'Libre Baskerville', serif;
             font-size: 1.5rem;
@@ -1132,6 +1144,9 @@
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
     <div id="cursor"></div>
     <div id="cursor-follower"></div>
 
@@ -1798,14 +1813,22 @@
             }, 100);
         });
 
-        // Navbar scroll effect
+        // Navbar scroll effect and progress bar
         const navbar = document.getElementById('navbar');
+        const scrollProgress = document.getElementById('scrollProgress');
+        
         window.addEventListener('scroll', () => {
+            // Navbar scroll effect
             if (window.scrollY > 100) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
+            
+            // Update scroll progress bar
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (window.scrollY / windowHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
         });
 
         // Reveal on scroll
