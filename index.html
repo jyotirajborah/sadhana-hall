@@ -754,6 +754,11 @@
             max-height: 90%;
             object-fit: contain;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.5s ease;
+        }
+
+        .lightbox-image.fade {
+            opacity: 0.3;
         }
 
         .lightbox-nav {
@@ -1439,6 +1444,7 @@
         ];
 
         let currentImageIndex = 0;
+        let autoPlayInterval = null;
 
         // Lightbox elements
         const viewGalleryBtn = document.getElementById('viewGalleryBtn');
@@ -1448,6 +1454,21 @@
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
         const lightboxCounter = document.getElementById('lightboxCounter');
+
+        // Auto-play function
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                showImage(currentImageIndex);
+            }, 3000); // Change image every 3 seconds
+        }
+
+        function stopAutoPlay() {
+            if (autoPlayInterval) {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = null;
+            }
+        }
 
         // Open lightbox
         viewGalleryBtn.addEventListener('click', function(e) {
@@ -1460,6 +1481,8 @@
             document.body.style.cursor = 'auto';
             cursor.style.display = 'none';
             follower.style.display = 'none';
+            // Start auto-play
+            startAutoPlay();
         });
 
         // Close lightbox
@@ -1477,17 +1500,23 @@
             document.body.style.cursor = 'none';
             cursor.style.display = 'block';
             follower.style.display = 'block';
+            // Stop auto-play
+            stopAutoPlay();
         }
 
-        // Navigate images
+        // Navigate images (manual navigation stops auto-play temporarily)
         lightboxPrev.addEventListener('click', function() {
+            stopAutoPlay();
             currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
             showImage(currentImageIndex);
+            startAutoPlay(); // Restart auto-play
         });
 
         lightboxNext.addEventListener('click', function() {
+            stopAutoPlay();
             currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
             showImage(currentImageIndex);
+            startAutoPlay(); // Restart auto-play
         });
 
         // Keyboard navigation
@@ -1497,16 +1526,22 @@
             if (e.key === 'Escape') {
                 closeLightbox();
             } else if (e.key === 'ArrowLeft') {
+                stopAutoPlay();
                 lightboxPrev.click();
             } else if (e.key === 'ArrowRight') {
+                stopAutoPlay();
                 lightboxNext.click();
             }
         });
 
-        // Show image
+        // Show image with fade effect
         function showImage(index) {
-            lightboxImage.src = galleryImages[index];
-            lightboxCounter.textContent = `${index + 1} / ${galleryImages.length}`;
+            lightboxImage.classList.add('fade');
+            setTimeout(() => {
+                lightboxImage.src = galleryImages[index];
+                lightboxCounter.textContent = `${index + 1} / ${galleryImages.length}`;
+                lightboxImage.classList.remove('fade');
+            }, 250);
         }
 
         // Video fallback handler
