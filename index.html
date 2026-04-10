@@ -1159,8 +1159,8 @@
                 <h2 class="section-title">Why This Project is Needed</h2>
             </div>
 
-            <div class="horizontal-cards-container" style="display: flex; gap: 2rem; margin-top: 6rem; overflow-x: auto; padding: 2rem 0; scroll-behavior: smooth;">
-                <div class="need-card" style="min-width: 300px; flex: 1; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
+            <div class="horizontal-cards-container" style="display: flex; gap: 2rem; margin-top: 6rem; padding: 2rem 0; justify-content: center; align-items: stretch;">
+                <div class="need-card" style="flex: 1; max-width: 350px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
                     <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(10, 22, 40, 0.1); background: white; height: 100%;">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=80" alt="Youth Stress" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
                         <div style="padding: 2rem;">
@@ -1169,7 +1169,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="need-card" style="min-width: 300px; flex: 1; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
+                <div class="need-card" style="flex: 1; max-width: 350px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
                     <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(10, 22, 40, 0.1); background: white; height: 100%;">
                         <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="Digital Addiction" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
                         <div style="padding: 2rem;">
@@ -1178,7 +1178,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="need-card" style="min-width: 300px; flex: 1; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
+                <div class="need-card" style="flex: 1; max-width: 350px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
                     <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(10, 22, 40, 0.1); background: white; height: 100%;">
                         <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80" alt="Meditation Education" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
                         <div style="padding: 2rem;">
@@ -1187,7 +1187,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="need-card" style="min-width: 300px; flex: 1; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
+                <div class="need-card" style="flex: 1; max-width: 350px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
                     <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(10, 22, 40, 0.1); background: white; height: 100%;">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80" alt="Indian Arts" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
                         <div style="padding: 2rem;">
@@ -1846,32 +1846,22 @@
         const needCards = document.querySelectorAll('.need-card');
         needCards.forEach(card => {
             card.addEventListener('mouseenter', function() {
-                // Shrink other cards
-                needCards.forEach(c => {
-                    if (c !== card) {
-                        c.style.flex = '0.7';
-                        c.style.opacity = '0.6';
-                    }
-                });
-                // Grow hovered card
-                card.style.flex = '1.5';
-                card.style.transform = 'scale(1.05)';
+                // Scale up hovered card
+                card.style.transform = 'scale(1.1)';
                 card.style.zIndex = '10';
+                card.style.boxShadow = '0 20px 50px rgba(10, 22, 40, 0.2)';
                 // Zoom image
                 const img = card.querySelector('img');
-                if (img) img.style.transform = 'scale(1.1)';
+                if (img) img.style.transform = 'scale(1.15)';
             });
             
             card.addEventListener('mouseleave', function() {
-                // Reset all cards
-                needCards.forEach(c => {
-                    c.style.flex = '1';
-                    c.style.opacity = '1';
-                    c.style.transform = 'scale(1)';
-                    c.style.zIndex = '1';
-                    const img = c.querySelector('img');
-                    if (img) img.style.transform = 'scale(1)';
-                });
+                // Reset card
+                card.style.transform = 'scale(1)';
+                card.style.zIndex = '1';
+                card.style.boxShadow = '0 10px 30px rgba(10, 22, 40, 0.1)';
+                const img = card.querySelector('img');
+                if (img) img.style.transform = 'scale(1)';
             });
         });
 
