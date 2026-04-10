@@ -1261,37 +1261,94 @@
                 <h2 class="section-title">Key Components</h2>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 6rem;">
-                <div class="reveal" id="component-image-container">
-                    <img id="component-image" 
-                         src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800&q=80" 
+            <!-- Component 1: Image Left, Text Right -->
+            <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 6rem;">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800&q=80" 
                          alt="Meditation Hall" 
-                         style="width: 100%; height: 500px; object-fit: cover; border-radius: 0; box-shadow: 0 30px 60px rgba(10, 22, 40, 0.3); transition: opacity 0.5s ease;">
+                         style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px rgba(10, 22, 40, 0.2);">
                 </div>
-                <div class="reveal">
-                    <div style="display: flex; flex-direction: column; gap: 1rem;">
-                        <div class="component-tab active" data-image="https://images.unsplash.com/photo-1588286840104-8957b019727f?w=800&q=80" data-alt="Meditation Hall">
-                            Meditation Hall
-                        </div>
-                        <div class="component-tab" data-image="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80" data-alt="Community Kitchen">
-                            Community Kitchen & Dining
-                        </div>
-                        <div class="component-tab" data-image="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" data-alt="Music Academy">
-                            Music & Cultural Academy
-                        </div>
-                        <div class="component-tab" data-image="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80" data-alt="Yoga Centre">
-                            Yoga Research & Training Centre
-                        </div>
-                        <div class="component-tab" data-image="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80" data-alt="Library">
-                            Spiritual Library
-                        </div>
-                        <div class="component-tab" data-image="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80" data-alt="Youth Centre">
-                            Youth Development Centre
-                        </div>
-                        <div class="component-tab" data-image="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80" data-alt="Residential">
-                            Residential Facilities
-                        </div>
-                    </div>
+                <div style="padding: 2rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem;">Meditation Hall</h3>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--slate);">A serene space designed for daily guided meditation sessions and Rupadhyana workshops, fostering inner peace and mindfulness.</p>
+                </div>
+            </div>
+
+            <!-- Component 2: Text Left, Image Right -->
+            <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 6rem;">
+                <div style="padding: 2rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem;">Community Kitchen & Dining</h3>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--slate);">A welcoming space where community members gather to share nutritious meals and build connections.</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80" 
+                         alt="Community Kitchen" 
+                         style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px rgba(10, 22, 40, 0.2);">
+                </div>
+            </div>
+
+            <!-- Component 3: Image Left, Text Right -->
+            <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 6rem;">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" 
+                         alt="Music Academy" 
+                         style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px rgba(10, 22, 40, 0.2);">
+                </div>
+                <div style="padding: 2rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem;">Music & Cultural Academy</h3>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--slate);">Dedicated to preserving and teaching Hindustani classical music, instrumental training, and cultural heritage.</p>
+                </div>
+            </div>
+
+            <!-- Component 4: Text Left, Image Right -->
+            <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 6rem;">
+                <div style="padding: 2rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem;">Yoga Research & Training Centre</h3>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--slate);">A comprehensive facility for yoga practice, research, and instructor certification programs.</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80" 
+                         alt="Yoga Centre" 
+                         style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px rgba(10, 22, 40, 0.2);">
+                </div>
+            </div>
+
+            <!-- Component 5: Image Left, Text Right -->
+            <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 6rem;">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80" 
+                         alt="Library" 
+                         style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px rgba(10, 22, 40, 0.2);">
+                </div>
+                <div style="padding: 2rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem;">Spiritual Library</h3>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--slate);">A curated collection of spiritual texts, scriptures, and resources for study and contemplation.</p>
+                </div>
+            </div>
+
+            <!-- Component 6: Text Left, Image Right -->
+            <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 6rem;">
+                <div style="padding: 2rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem;">Youth Development Centre</h3>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--slate);">Empowering young minds through personality development, stress management, and value education programs.</p>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80" 
+                         alt="Youth Centre" 
+                         style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px rgba(10, 22, 40, 0.2);">
+                </div>
+            </div>
+
+            <!-- Component 7: Image Left, Text Right -->
+            <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 6rem;">
+                <div>
+                    <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80" 
+                         alt="Residential" 
+                         style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px; box-shadow: 0 20px 40px rgba(10, 22, 40, 0.2);">
+                </div>
+                <div style="padding: 2rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem;">Residential Facilities</h3>
+                    <p style="font-size: 1.125rem; line-height: 1.8; color: var(--slate);">Comfortable accommodation for students, instructors, and visitors participating in extended programs.</p>
                 </div>
             </div>
         </div>
@@ -1728,30 +1785,6 @@
                         block: 'start'
                     });
                 }
-            });
-        });
-
-        // Component tabs functionality
-        const componentTabs = document.querySelectorAll('.component-tab');
-        const componentImage = document.getElementById('component-image');
-
-        componentTabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
-                componentTabs.forEach(t => t.classList.remove('active'));
-                
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                // Fade out image
-                componentImage.style.opacity = '0';
-                
-                // Change image after fade out
-                setTimeout(() => {
-                    componentImage.src = this.getAttribute('data-image');
-                    componentImage.alt = this.getAttribute('data-alt');
-                    componentImage.style.opacity = '1';
-                }, 300);
             });
         });
 
