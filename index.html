@@ -1539,29 +1539,32 @@
         let isDeleting = false;
 
         function typeText() {
+            const currentText = textToType.substring(0, charIndex);
+            typingText.textContent = currentText;
+
             if (!isDeleting && charIndex < textToType.length) {
                 // Typing forward
-                typingText.textContent += textToType.charAt(charIndex);
                 charIndex++;
-                setTimeout(typeText, 80); // Typing speed
+                setTimeout(typeText, 80);
             } else if (!isDeleting && charIndex === textToType.length) {
                 // Pause at end before deleting
                 isDeleting = true;
-                setTimeout(typeText, 2000); // Pause for 2 seconds
+                setTimeout(typeText, 2000);
             } else if (isDeleting && charIndex > 0) {
                 // Deleting backward
-                typingText.textContent = textToType.substring(0, charIndex - 1);
                 charIndex--;
-                setTimeout(typeText, 40); // Faster deletion speed
+                setTimeout(typeText, 40);
             } else if (isDeleting && charIndex === 0) {
                 // Start typing again
                 isDeleting = false;
-                setTimeout(typeText, 500); // Brief pause before retyping
+                setTimeout(typeText, 500);
             }
         }
 
-        // Start typing after page loads and initial animations
-        setTimeout(typeText, 2000);
+        // Start typing after page loads
+        if (typingText) {
+            setTimeout(typeText, 2000);
+        }
 
         // Gallery images (excluding chariot.jpeg)
         const galleryImages = [
