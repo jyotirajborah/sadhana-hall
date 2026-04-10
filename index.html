@@ -1090,7 +1090,7 @@
         <div id="chariotSpotlight" style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%); pointer-events: none; z-index: 1; opacity: 0; transition: opacity 0.3s ease; mix-blend-mode: screen;"></div>
         
         <!-- Dark Overlay -->
-        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 22, 40, 0.92) 0%, rgba(10, 22, 40, 0.88) 50%, rgba(10, 22, 40, 0.92) 100%); z-index: 1;"></div>
+        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 22, 40, 0.85) 0%, rgba(10, 22, 40, 0.80) 50%, rgba(10, 22, 40, 0.85) 100%); z-index: 1; transition: opacity 0.3s ease;" id="chariotOverlay"></div>
         
         <div class="sanskrit-container reveal" style="max-width: 1000px; margin: 0 auto; padding: 0 4rem; text-align: center; position: relative; z-index: 2;">
             <p style="color: #ffffff; font-size: 1.25rem; margin-bottom: 3rem; text-align: center; line-height: 1.8; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);">
@@ -1690,16 +1690,19 @@
         const chariotSection = document.getElementById('chariotSection');
         const chariotBg = document.getElementById('chariotBg');
         const chariotSpotlight = document.getElementById('chariotSpotlight');
+        const chariotOverlay = document.getElementById('chariotOverlay');
 
-        if (chariotSection && chariotBg && chariotSpotlight) {
+        if (chariotSection && chariotBg && chariotSpotlight && chariotOverlay) {
             chariotSection.addEventListener('mouseenter', function() {
                 chariotSpotlight.style.opacity = '1';
                 chariotBg.style.opacity = '0.9'; // Maximum visibility on hover
+                chariotOverlay.style.opacity = '0.5'; // Reduce overlay darkness
             });
 
             chariotSection.addEventListener('mouseleave', function() {
                 chariotSpotlight.style.opacity = '0';
                 chariotBg.style.opacity = '0.15'; // Return to normal
+                chariotOverlay.style.opacity = '1'; // Restore overlay
             });
 
             chariotSection.addEventListener('mousemove', function(e) {
