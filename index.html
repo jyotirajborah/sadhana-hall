@@ -1496,6 +1496,7 @@
             'pics/08.jpg'
         ];
 
+        let currentGalleryImages = galleryImages; // Active gallery images
         let currentImageIndex = 0;
         let autoPlayInterval = null;
 
@@ -1511,7 +1512,7 @@
         // Auto-play function
         function startAutoPlay() {
             autoPlayInterval = setInterval(() => {
-                currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+                currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
                 showImage(currentImageIndex);
             }, 3000); // Change image every 3 seconds
         }
@@ -1526,6 +1527,7 @@
         // Open lightbox
         viewGalleryBtn.addEventListener('click', function(e) {
             e.preventDefault();
+            currentGalleryImages = galleryImages; // Reset to main gallery
             currentImageIndex = 0;
             showImage(currentImageIndex);
             lightbox.classList.add('active');
@@ -1560,14 +1562,14 @@
         // Navigate images (manual navigation stops auto-play temporarily)
         lightboxPrev.addEventListener('click', function() {
             stopAutoPlay();
-            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
             showImage(currentImageIndex);
             startAutoPlay(); // Restart auto-play
         });
 
         lightboxNext.addEventListener('click', function() {
             stopAutoPlay();
-            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
             showImage(currentImageIndex);
             startAutoPlay(); // Restart auto-play
         });
@@ -1591,8 +1593,8 @@
         function showImage(index) {
             lightboxImage.classList.add('fade');
             setTimeout(() => {
-                lightboxImage.src = galleryImages[index];
-                lightboxCounter.textContent = `${index + 1} / ${galleryImages.length}`;
+                lightboxImage.src = currentGalleryImages[index];
+                lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
                 lightboxImage.classList.remove('fade');
             }, 250);
         }
@@ -1804,7 +1806,15 @@
                 if (images && images.length > 0) {
                     currentGalleryImages = images;
                     currentImageIndex = 0;
-                    showLightbox();
+                    showImage(currentImageIndex);
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    // Show normal cursor in lightbox
+                    document.body.style.cursor = 'auto';
+                    cursor.style.display = 'none';
+                    follower.style.display = 'none';
+                    // Start auto-play
+                    startAutoPlay();
                 }
             });
         });
