@@ -728,6 +728,20 @@
             box-shadow: 0 20px 40px rgba(212, 165, 116, 0.2);
         }
 
+        /* Focus Card Specific Hover Effects */
+        .focus-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(212, 165, 116, 0.3);
+        }
+
+        .focus-card:hover svg {
+            transform: scale(1.1);
+        }
+
+        .focus-card:hover h3 {
+            color: var(--gold);
+        }
+
         /* Lightbox Gallery */
         .lightbox {
             display: none;
@@ -1411,30 +1425,33 @@
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem; margin-top: 6rem;">
-                <div class="impact-card reveal focus-card" data-category="education" style="text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                    <svg style="width: 80px; height: 80px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin: 0 auto;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div class="impact-card reveal focus-card" data-category="education" style="text-align: center; cursor: pointer; transition: all 0.3s ease; position: relative;">
+                    <svg style="width: 80px; height: 80px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin: 0 auto; transition: transform 0.3s ease;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
                         <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
                     </svg>
-                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: white; margin-top: 1.5rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: white; margin-top: 1.5rem; transition: color 0.3s ease;">
                         Education
                     </h3>
+                    <p style="color: var(--gold); font-size: 0.875rem; margin-top: 1rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8;">Click to view gallery</p>
                 </div>
-                <div class="impact-card reveal focus-card" data-category="health" style="text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                    <svg style="width: 80px; height: 80px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin: 0 auto;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div class="impact-card reveal focus-card" data-category="health" style="text-align: center; cursor: pointer; transition: all 0.3s ease; position: relative;">
+                    <svg style="width: 80px; height: 80px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin: 0 auto; transition: transform 0.3s ease;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                     </svg>
-                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: white; margin-top: 1.5rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: white; margin-top: 1.5rem; transition: color 0.3s ease;">
                         Health
                     </h3>
+                    <p style="color: var(--gold); font-size: 0.875rem; margin-top: 1rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8;">Click to view gallery</p>
                 </div>
-                <div class="impact-card reveal focus-card" data-category="philanthropy" style="text-align: center; cursor: pointer; transition: transform 0.3s ease;">
-                    <svg style="width: 80px; height: 80px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin: 0 auto;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <div class="impact-card reveal focus-card" data-category="philanthropy" style="text-align: center; cursor: pointer; transition: all 0.3s ease; position: relative;">
+                    <svg style="width: 80px; height: 80px; stroke: var(--gold); fill: none; stroke-width: 1.5; margin: 0 auto; transition: transform 0.3s ease;" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                     </svg>
-                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: white; margin-top: 1.5rem;">
+                    <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: white; margin-top: 1.5rem; transition: color 0.3s ease;">
                         Philanthropy
                     </h3>
+                    <p style="color: var(--gold); font-size: 0.875rem; margin-top: 1rem; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8;">Click to view gallery</p>
                 </div>
             </div>
         </div>
