@@ -1642,9 +1642,7 @@
             <button class="lightbox-close" id="lightboxClose">&times;</button>
             <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
             <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery Image" style="display: none;">
-            <video class="lightbox-image" id="lightboxVideo" controls style="display: none;">
-                <source src="" type="video/mp4">
-            </video>
+            <iframe class="lightbox-image" id="lightboxYoutube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none; width: 80vw; height: 45vw; max-width: 1200px; max-height: 675px;"></iframe>
             <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
             <div class="lightbox-counter" id="lightboxCounter"></div>
         </div>
@@ -1686,9 +1684,9 @@
             setTimeout(typeText, 2000);
         }
 
-        // Gallery images (excluding chariot.jpeg) - First item is video
+        // Gallery images (excluding chariot.jpeg) - First item is YouTube video
         const galleryImages = [
-            { type: 'video', src: 'video/new_upasana_video.mp4' },
+            { type: 'youtube', src: 'https://www.youtube.com/embed/vRfLahVeLdU' },
             { type: 'image', src: 'pics/01.jpg' },
             { type: 'image', src: 'pics/02.jpg' },
             { type: 'image', src: 'pics/03.jpg' },
@@ -1707,17 +1705,21 @@
         const viewGalleryBtn = document.getElementById('viewGalleryBtn');
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
-        const lightboxVideo = document.getElementById('lightboxVideo');
+        const lightboxYoutube = document.getElementById('lightboxYoutube');
         const lightboxClose = document.getElementById('lightboxClose');
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
         const lightboxCounter = document.getElementById('lightboxCounter');
 
-        // Auto-play function
+        // Auto-play function (skips YouTube video)
         function startAutoPlay() {
             autoPlayInterval = setInterval(() => {
-                currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
-                showImage(currentImageIndex);
+                // Only auto-advance if not on YouTube video
+                const currentItem = currentGalleryImages[currentImageIndex];
+                if (currentItem.type !== 'youtube') {
+                    currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
+                    showImage(currentImageIndex);
+                }
             }, 3000); // Change image every 3 seconds
         }
 
@@ -1763,19 +1765,17 @@
             stopAutoPlay();
         }
 
-        // Navigate images (manual navigation stops auto-play temporarily)
+        // Navigate images (manual navigation)
         lightboxPrev.addEventListener('click', function() {
             stopAutoPlay();
             currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
             showImage(currentImageIndex);
-            startAutoPlay(); // Restart auto-play
         });
 
         lightboxNext.addEventListener('click', function() {
             stopAutoPlay();
             currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
             showImage(currentImageIndex);
-            startAutoPlay(); // Restart auto-play
         });
 
         // Keyboard navigation
@@ -1793,26 +1793,23 @@
             }
         });
 
-        // Show image or video with fade effect
+        // Show image or YouTube video with fade effect
         function showImage(index) {
             const item = currentGalleryImages[index];
             
-            // Pause video if switching away from it
-            if (lightboxVideo.style.display === 'block') {
-                lightboxVideo.pause();
-            }
-            
-            if (item.type === 'video') {
-                // Show video, hide image
+            if (item.type === 'youtube') {
+                // Stop auto-play when showing YouTube video
+                stopAutoPlay();
+                
+                // Show YouTube iframe, hide image
                 lightboxImage.style.display = 'none';
-                lightboxVideo.style.display = 'block';
-                lightboxVideo.querySelector('source').src = item.src;
-                lightboxVideo.load();
-                lightboxVideo.play();
+                lightboxYoutube.style.display = 'block';
+                lightboxYoutube.src = item.src;
                 lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
             } else {
-                // Show image, hide video
-                lightboxVideo.style.display = 'none';
+                // Show image, hide YouTube
+                lightboxYoutube.style.display = 'none';
+                lightboxYoutube.src = ''; // Stop YouTube video
                 lightboxImage.style.display = 'block';
                 lightboxImage.classList.add('fade');
                 setTimeout(() => {
@@ -1820,6 +1817,11 @@
                     lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
                     lightboxImage.classList.remove('fade');
                 }, 250);
+                
+                // Restart auto-play when leaving YouTube video
+                if (currentImageIndex !== 0) { // Don't restart if we're on first slide
+                    startAutoPlay();
+                }
             }
         }
 
