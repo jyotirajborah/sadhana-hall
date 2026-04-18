@@ -811,6 +811,56 @@
             stroke-width: 2;
         }
 
+        /* Decorative Motifs */
+        .motif-corner {
+            position: absolute;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .motif-corner.top-left {
+            top: 2rem;
+            left: 2rem;
+            width: 80px;
+            height: 80px;
+        }
+
+        .motif-corner.top-right {
+            top: 2rem;
+            right: 2rem;
+            width: 80px;
+            height: 80px;
+            transform: scaleX(-1);
+        }
+
+        .motif-corner.bottom-left {
+            bottom: 2rem;
+            left: 2rem;
+            width: 80px;
+            height: 80px;
+            transform: scaleY(-1);
+        }
+
+        .motif-corner.bottom-right {
+            bottom: 2rem;
+            right: 2rem;
+            width: 80px;
+            height: 80px;
+            transform: scale(-1);
+        }
+
+        .motif-divider {
+            text-align: center;
+            margin: 4rem auto;
+            opacity: 0.3;
+        }
+
+        .motif-divider img {
+            width: 100px;
+            height: auto;
+        }
+
         /* Lightbox Gallery */
         .lightbox {
             display: none;
@@ -1224,7 +1274,11 @@
     </section>
 
     <!-- Section 3: Why This Project is Needed -->
-    <section class="story" id="story">
+    <section class="story" id="story" style="position: relative;">
+        <!-- Decorative Motifs -->
+        <img src="motiff/1.png" class="motif-corner top-left" alt="">
+        <img src="motiff/2.png" class="motif-corner top-right" alt="">
+        
         <div class="story-container">
             <div class="story-header reveal">
                 <h2 class="section-title">Why This Project is Needed</h2>
@@ -1315,10 +1369,17 @@
     </section>
 
     <!-- Section 5: Key Components -->
-    <section class="programs" id="components">
+    <section class="programs" id="components" style="position: relative;">
+        <!-- Decorative Motifs -->
+        <img src="motiff/3.png" class="motif-corner top-left" alt="">
+        <img src="motiff/4.png" class="motif-corner top-right" alt="">
+        
         <div class="programs-container">
             <div class="story-header reveal">
                 <h2 class="section-title">Key Components</h2>
+                <div class="motif-divider reveal">
+                    <img src="motiff/Paisley (1).png" alt="">
+                </div>
                 <p style="max-width: 900px; margin: 2rem auto 0; font-size: 1.125rem; line-height: 1.8; color: var(--slate); text-align: justify;">
                     UPASANA is designed as a comprehensive ecosystem that nurtures the mind, body, and spirit. Each facility has been thoughtfully planned to create an integrated environment where ancient wisdom meets modern wellness practices. From dedicated meditation spaces that foster inner peace to cultural academies preserving our rich heritage, every component serves a unique purpose in our holistic approach to personal and community development. These interconnected facilities work in harmony to provide a transformative experience for individuals seeking balance, growth, and connection with their deeper selves while contributing to the broader community's wellbeing.
                 </p>
@@ -1418,7 +1479,11 @@
     </section>
 
     <!-- Section 6: Program Design -->
-    <section class="programs" id="programs" style="background: var(--midnight); padding: 10rem 0;">
+    <section class="programs" id="programs" style="background: var(--midnight); padding: 10rem 0; position: relative;">
+        <!-- Decorative Motifs -->
+        <img src="motiff/5.png" class="motif-corner top-left" alt="" style="opacity: 0.08;">
+        <img src="motiff/6.png" class="motif-corner top-right" alt="" style="opacity: 0.08;">
+        
         <div class="programs-container" style="max-width: 1400px; margin: 0 auto; padding: 0 4rem;">
             <div class="story-header reveal">
                 <h2 class="section-title" style="color: white;">Program Design</h2>
@@ -1590,7 +1655,11 @@
     </section>
 
     <!-- Section 10: Focus Areas -->
-    <section class="impact">
+    <section class="impact" style="position: relative;">
+        <!-- Decorative Motifs -->
+        <img src="motiff/1.png" class="motif-corner bottom-left" alt="" style="opacity: 0.08;">
+        <img src="motiff/2.png" class="motif-corner bottom-right" alt="" style="opacity: 0.08;">
+        
         <div class="impact-container">
             <div class="story-header reveal">
                 <h2 class="section-title" style="color: white;">Focus Areas</h2>
