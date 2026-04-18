@@ -2264,7 +2264,7 @@
             <button class="lightbox-close" id="lightboxClose">&times;</button>
             <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
             <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery Image" style="display: none;">
-            <iframe class="lightbox-image" id="lightboxYoutube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none; width: 80vw; height: 45vw; max-width: 1200px; max-height: 675px;"></iframe>
+            <iframe class="lightbox-image" id="lightboxYoutube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none; width: 80vw; height: 45vw; max-width: 1200px; max-height: 675px; pointer-events: auto;"></iframe>
             <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
             <div class="lightbox-counter" id="lightboxCounter"></div>
         </div>
@@ -2308,7 +2308,7 @@
 
         // Gallery images (excluding chariot.jpeg) - First item is YouTube video
         const galleryImages = [
-            { type: 'youtube', src: 'https://www.youtube.com/embed/vRfLahVeLdU?enablejsapi=1' },
+            { type: 'youtube', src: 'https://www.youtube.com/embed/vRfLahVeLdU?enablejsapi=1&modestbranding=1&rel=0&showinfo=0&controls=1' },
             { type: 'image', src: 'pics/01.jpg' },
             { type: 'image', src: 'pics/02.jpg' },
             { type: 'image', src: 'pics/03.jpg' },
