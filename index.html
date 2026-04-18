@@ -811,7 +811,7 @@
             stroke-width: 2;
         }
 
-        /* Decorative Motifs - Large Animated */
+        /* Indian Decorative Motifs - CSS/SVG Based */
         .motif-large {
             position: absolute;
             pointer-events: none;
@@ -819,39 +819,104 @@
             z-index: 1;
         }
 
-        .motif-huge {
+        /* Lotus Motif */
+        .lotus-motif {
             width: 400px;
             height: 400px;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            clip-path: polygon(
+                50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+            );
         }
 
-        .motif-mega {
-            width: 600px;
-            height: 600px;
+        /* Mandala Motif */
+        .mandala-motif {
+            width: 500px;
+            height: 500px;
+            background: conic-gradient(
+                from 0deg,
+                var(--gold) 0deg 30deg,
+                transparent 30deg 60deg,
+                var(--bronze) 60deg 90deg,
+                transparent 90deg 120deg,
+                var(--gold) 120deg 150deg,
+                transparent 150deg 180deg,
+                var(--bronze) 180deg 210deg,
+                transparent 210deg 240deg,
+                var(--gold) 240deg 270deg,
+                transparent 270deg 300deg,
+                var(--bronze) 300deg 330deg,
+                transparent 330deg 360deg
+            );
+            border-radius: 50%;
         }
 
-        /* Floating Animation */
-        @keyframes float {
+        /* Paisley Motif */
+        .paisley-motif {
+            width: 300px;
+            height: 450px;
+            background: var(--gold);
+            border-radius: 50% 50% 50% 0%;
+            opacity: 0.15;
+        }
+
+        /* Rangoli Pattern */
+        .rangoli-motif {
+            width: 400px;
+            height: 400px;
+            background: 
+                radial-gradient(circle at 50% 50%, var(--gold) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, var(--bronze) 40%, transparent 50%),
+                radial-gradient(circle at 50% 50%, var(--gold) 60%, transparent 70%);
+        }
+
+        /* Bloom Animation - for lotus */
+        @keyframes bloom {
             0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-30px) rotate(5deg);
-            }
-        }
-
-        /* Pulse Animation */
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.12;
+                transform: scale(0.9);
+                opacity: 0.1;
             }
             50% {
                 transform: scale(1.1);
-                opacity: 0.18;
+                opacity: 0.15;
             }
         }
 
-        /* Rotate Animation */
+        /* Pulse Animation - for mandala/rangoli */
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.12;
+                filter: brightness(1);
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.18;
+                filter: brightness(1.2);
+            }
+        }
+
+        /* Sway Animation - for paisley */
+        @keyframes sway {
+            0%, 100% {
+                transform: rotate(-5deg);
+            }
+            50% {
+                transform: rotate(5deg);
+            }
+        }
+
+        /* Gentle Float - for all */
+        @keyframes float-gentle {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Rotate Slow - only for circular patterns */
         @keyframes rotate-slow {
             from {
                 transform: rotate(0deg);
@@ -861,15 +926,23 @@
             }
         }
 
-        .motif-float {
-            animation: float 8s ease-in-out infinite;
+        .motif-bloom {
+            animation: bloom 8s ease-in-out infinite;
         }
 
-        .motif-pulse {
-            animation: pulse 6s ease-in-out infinite;
+        .motif-pulse-glow {
+            animation: pulse-glow 6s ease-in-out infinite;
         }
 
-        .motif-rotate {
+        .motif-sway {
+            animation: sway 10s ease-in-out infinite;
+        }
+
+        .motif-float-gentle {
+            animation: float-gentle 12s ease-in-out infinite;
+        }
+
+        .motif-rotate-slow {
             animation: rotate-slow 60s linear infinite;
         }
 
@@ -1287,9 +1360,9 @@
 
     <!-- Section 3: Why This Project is Needed -->
     <section class="story" id="story" style="position: relative; overflow: hidden;">
-        <!-- Large Animated Motifs -->
-        <img src="motiff/1.png" class="motif-large motif-huge motif-float" alt="" style="top: -100px; right: -100px;">
-        <img src="motiff/Paisley (1).png" class="motif-large motif-mega motif-pulse" alt="" style="bottom: -200px; left: -150px; opacity: 0.08;">
+        <!-- CSS Motifs -->
+        <div class="motif-large lotus-motif motif-bloom" style="top: -100px; right: -100px;"></div>
+        <div class="motif-large paisley-motif motif-sway" style="bottom: -150px; left: -80px;"></div>
         
         <div class="story-container">
             <div class="story-header reveal">
@@ -1348,9 +1421,9 @@
         <!-- Dark Overlay -->
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 22, 40, 0.70) 0%, rgba(10, 22, 40, 0.65) 50%, rgba(10, 22, 40, 0.70) 100%); z-index: 1; transition: opacity 0.3s ease;" id="chariotOverlay"></div>
         
-        <!-- Large Animated Motifs -->
-        <img src="motiff/3.png" class="motif-large motif-huge motif-rotate" alt="" style="top: -150px; left: -100px; z-index: 2; opacity: 0.1; filter: brightness(0) invert(1);">
-        <img src="motiff/4.png" class="motif-large motif-huge motif-float" alt="" style="bottom: -150px; right: -100px; z-index: 2; opacity: 0.1; filter: brightness(0) invert(1);">
+        <!-- CSS Motifs -->
+        <div class="motif-large mandala-motif motif-rotate-slow" style="top: -150px; left: -150px; z-index: 2; opacity: 0.08;"></div>
+        <div class="motif-large rangoli-motif motif-pulse-glow" style="bottom: -100px; right: -100px; z-index: 2; opacity: 0.08;"></div>
         
         <div class="sanskrit-container reveal" style="max-width: 900px; margin: 0 auto; padding: 0 4rem; text-align: center; position: relative; z-index: 2;">
             <h2 style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: #d4a574; margin-bottom: 1.5rem; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);">The Chariot of Life</h2>
@@ -1386,10 +1459,10 @@
 
     <!-- Section 5: Key Components -->
     <section class="programs" id="components" style="position: relative; overflow: hidden;">
-        <!-- Large Animated Motifs -->
-        <img src="motiff/2.png" class="motif-large motif-mega motif-pulse" alt="" style="top: -250px; left: -200px;">
-        <img src="motiff/5.png" class="motif-large motif-huge motif-float" alt="" style="top: 50%; right: -150px; transform: translateY(-50%);">
-        <img src="motiff/6.png" class="motif-large motif-huge motif-rotate" alt="" style="bottom: -100px; left: 10%; opacity: 0.08;">
+        <!-- CSS Motifs -->
+        <div class="motif-large rangoli-motif motif-pulse-glow" style="top: -150px; left: -150px;"></div>
+        <div class="motif-large lotus-motif motif-bloom" style="top: 40%; right: -120px;"></div>
+        <div class="motif-large paisley-motif motif-sway" style="bottom: -100px; left: 15%;"></div>
         
         <div class="programs-container">
             <div class="story-header reveal">
@@ -1494,9 +1567,9 @@
 
     <!-- Section 6: Program Design -->
     <section class="programs" id="programs" style="background: var(--midnight); padding: 10rem 0; position: relative; overflow: hidden;">
-        <!-- Large Animated Motifs -->
-        <img src="motiff/Paisley (1).png" class="motif-large motif-mega motif-rotate" alt="" style="top: -200px; right: -200px; opacity: 0.08; filter: brightness(0) invert(1);">
-        <img src="motiff/4.png" class="motif-large motif-huge motif-pulse" alt="" style="bottom: -100px; left: -100px; opacity: 0.1; filter: brightness(0) invert(1);">
+        <!-- CSS Motifs -->
+        <div class="motif-large mandala-motif motif-rotate-slow" style="top: -200px; right: -200px; opacity: 0.06;"></div>
+        <div class="motif-large lotus-motif motif-bloom" style="bottom: -100px; left: -100px; opacity: 0.08;"></div>
         
         <div class="programs-container" style="max-width: 1400px; margin: 0 auto; padding: 0 4rem;">
             <div class="story-header reveal">
@@ -1601,9 +1674,9 @@
 
     <!-- Section 7: Impact Projection -->
     <section class="programs" id="impact" style="background: var(--cream); position: relative; overflow: hidden;">
-        <!-- Large Animated Motifs -->
-        <img src="motiff/3.png" class="motif-large motif-huge motif-float" alt="" style="top: -100px; left: -100px;">
-        <img src="motiff/6.png" class="motif-large motif-huge motif-pulse" alt="" style="bottom: -100px; right: -100px;">
+        <!-- CSS Motifs -->
+        <div class="motif-large lotus-motif motif-bloom" style="top: -100px; left: -100px;"></div>
+        <div class="motif-large paisley-motif motif-sway" style="bottom: -120px; right: -80px;"></div>
         
         <div class="programs-container">
             <div class="story-header reveal">
@@ -1650,9 +1723,9 @@
 
     <!-- Section 9: Implementation Plan -->
     <section class="programs" style="background: var(--cream); position: relative; overflow: hidden;">
-        <!-- Large Animated Motifs -->
-        <img src="motiff/5.png" class="motif-large motif-huge motif-rotate" alt="" style="top: 50%; left: -150px; transform: translateY(-50%);">
-        <img src="motiff/2.png" class="motif-large motif-huge motif-float" alt="" style="top: 20%; right: -100px;">
+        <!-- CSS Motifs -->
+        <div class="motif-large rangoli-motif motif-pulse-glow" style="top: 30%; left: -150px;"></div>
+        <div class="motif-large lotus-motif motif-bloom" style="top: 10%; right: -100px;"></div>
         
         <div class="programs-container">
             <div class="story-header reveal">
@@ -1678,9 +1751,9 @@
 
     <!-- Section 10: Focus Areas -->
     <section class="impact" style="position: relative; overflow: hidden;">
-        <!-- Large Animated Motifs -->
-        <img src="motiff/1.png" class="motif-large motif-mega motif-pulse" alt="" style="top: -250px; left: -200px; opacity: 0.1; filter: brightness(0) invert(1);">
-        <img src="motiff/Paisley (1).png" class="motif-large motif-huge motif-rotate" alt="" style="bottom: -150px; right: -150px; opacity: 0.08; filter: brightness(0) invert(1);">
+        <!-- CSS Motifs -->
+        <div class="motif-large mandala-motif motif-rotate-slow" style="top: -200px; left: -200px; opacity: 0.06;"></div>
+        <div class="motif-large rangoli-motif motif-pulse-glow" style="bottom: -150px; right: -150px; opacity: 0.06;"></div>
         
         <div class="impact-container">
             <div class="story-header reveal">
