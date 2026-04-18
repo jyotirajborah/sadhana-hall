@@ -2308,7 +2308,7 @@
 
         // Gallery images (excluding chariot.jpeg) - First item is YouTube video
         const galleryImages = [
-            { type: 'youtube', src: 'https://www.youtube.com/embed/vRfLahVeLdU?enablejsapi=1&modestbranding=1&rel=0&showinfo=0&controls=1&origin=' + window.location.origin },
+            { type: 'video', src: 'video/new_upasana_video.mp4' },
             { type: 'image', src: 'pics/01.jpg' },
             { type: 'image', src: 'pics/02.jpg' },
             { type: 'image', src: 'pics/03.jpg' },
@@ -2339,8 +2339,8 @@
         function startAutoPlay() {
             if (autoPlayInterval) return; // Don't start if already running
             autoPlayInterval = setInterval(() => {
-                // Don't auto-advance if YouTube video is playing
-                if (isYoutubePlaying) {
+                // Don't auto-advance if we're on the first slide (video) - user must manually advance
+                if (currentImageIndex === 0) {
                     return;
                 }
                 
@@ -2468,27 +2468,46 @@
         function showImage(index) {
             const item = currentGalleryImages[index];
             
-            if (item.type === 'youtube') {
-                // Show YouTube iframe, hide image
+            if (item.type === 'video') {
+                // Show video element, hide image and YouTube
                 lightboxImage.style.display = 'none';
+                lightboxYoutube.style.display = 'none';
+                
+                // Create or update video element
+                let videoElement = document.getElementById('lightboxVideo');
+                if (!videoElement) {
+                    videoElement = document.createElement('video');
+                    videoElement.id = 'lightboxVideo';
+                    videoElement.className = 'lightbox-image';
+                    videoElement.controls = true;
+                    videoElement.style.cssText = 'width: 80vw; height: 45vw; max-width: 1200px; max-height: 675px;';
+                    lightboxYoutube.parentNode.insertBefore(videoElement, lightboxYoutube);
+                }
+                
+                videoElement.style.display = 'block';
+                videoElement.src = item.src;
+                
+                lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
+            } else if (item.type === 'youtube') {
+                // Show YouTube iframe, hide image and video
+                lightboxImage.style.display = 'none';
+                const videoElement = document.getElementById('lightboxVideo');
+                if (videoElement) videoElement.style.display = 'none';
                 lightboxYoutube.style.display = 'block';
                 
                 // Only load YouTube if not already loaded
                 if (!lightboxYoutube.src || lightboxYoutube.src !== item.src) {
                     lightboxYoutube.src = item.src;
-                    // Reset playing state when loading new video
-                    isYoutubePlaying = false;
                 }
                 
                 lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
             } else {
-                // Show image, hide YouTube
+                // Show image, hide YouTube and video
                 lightboxYoutube.style.display = 'none';
+                const videoElement = document.getElementById('lightboxVideo');
+                if (videoElement) videoElement.style.display = 'none';
                 lightboxImage.style.display = 'block';
                 lightboxImage.classList.add('fade');
-                
-                // Reset YouTube playing state when leaving video
-                isYoutubePlaying = false;
                 
                 setTimeout(() => {
                     lightboxImage.src = item.src;
