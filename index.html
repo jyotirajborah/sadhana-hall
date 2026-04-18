@@ -1686,7 +1686,7 @@
 
         // Gallery images (excluding chariot.jpeg) - First item is YouTube video
         const galleryImages = [
-            { type: 'youtube', src: 'https://www.youtube.com/embed/vRfLahVeLdU' },
+            { type: 'youtube', src: 'https://www.youtube.com/embed/vRfLahVeLdU?enablejsapi=1' },
             { type: 'image', src: 'pics/01.jpg' },
             { type: 'image', src: 'pics/02.jpg' },
             { type: 'image', src: 'pics/03.jpg' },
@@ -1700,6 +1700,8 @@
         let currentGalleryImages = galleryImages; // Active gallery images
         let currentImageIndex = 0;
         let autoPlayInterval = null;
+        let youtubePlayer = null;
+        let isYoutubePlaying = false;
 
         // Lightbox elements
         const viewGalleryBtn = document.getElementById('viewGalleryBtn');
@@ -1711,15 +1713,16 @@
         const lightboxNext = document.getElementById('lightboxNext');
         const lightboxCounter = document.getElementById('lightboxCounter');
 
-        // Auto-play function (skips YouTube video)
+        // Auto-play function
         function startAutoPlay() {
+            if (autoPlayInterval) return; // Don't start if already running
             autoPlayInterval = setInterval(() => {
-                // Only auto-advance if not on YouTube video
-                const currentItem = currentGalleryImages[currentImageIndex];
-                if (currentItem.type !== 'youtube') {
-                    currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
-                    showImage(currentImageIndex);
+                // Don't auto-advance if YouTube video is playing
+                if (isYoutubePlaying) {
+                    return;
                 }
+                currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
+                showImage(currentImageIndex);
             }, 3000); // Change image every 3 seconds
         }
 
@@ -1763,17 +1766,42 @@
             follower.style.display = 'block';
             // Stop auto-play
             stopAutoPlay();
+            // Reset YouTube playing state
+            isYoutubePlaying = false;
         }
+
+        // Listen for YouTube player state changes via postMessage API
+        window.addEventListener('message', function(event) {
+            // Check if message is from YouTube
+            if (event.origin !== 'https://www.youtube.com') return;
+            
+            try {
+                const data = JSON.parse(event.data);
+                
+                // YouTube player state: 1 = playing, 2 = paused, 0 = ended
+                if (data.event === 'infoDelivery' && data.info && data.info.playerState !== undefined) {
+                    const playerState = data.info.playerState;
+                    
+                    if (playerState === 1) {
+                        // Video is playing - pause slideshow
+                        isYoutubePlaying = true;
+                    } else if (playerState === 2 || playerState === 0) {
+                        // Video is paused or ended - resume slideshow
+                        isYoutubePlaying = false;
+                    }
+                }
+            } catch (e) {
+                // Ignore parsing errors
+            }
+        });
 
         // Navigate images (manual navigation)
         lightboxPrev.addEventListener('click', function() {
-            stopAutoPlay();
             currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
             showImage(currentImageIndex);
         });
 
         lightboxNext.addEventListener('click', function() {
-            stopAutoPlay();
             currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
             showImage(currentImageIndex);
         });
@@ -1785,10 +1813,8 @@
             if (e.key === 'Escape') {
                 closeLightbox();
             } else if (e.key === 'ArrowLeft') {
-                stopAutoPlay();
                 lightboxPrev.click();
             } else if (e.key === 'ArrowRight') {
-                stopAutoPlay();
                 lightboxNext.click();
             }
         });
@@ -1798,30 +1824,32 @@
             const item = currentGalleryImages[index];
             
             if (item.type === 'youtube') {
-                // Stop auto-play when showing YouTube video
-                stopAutoPlay();
-                
                 // Show YouTube iframe, hide image
                 lightboxImage.style.display = 'none';
                 lightboxYoutube.style.display = 'block';
-                lightboxYoutube.src = item.src;
+                
+                // Only load YouTube if not already loaded
+                if (!lightboxYoutube.src || lightboxYoutube.src !== item.src) {
+                    lightboxYoutube.src = item.src;
+                    // Reset playing state when loading new video
+                    isYoutubePlaying = false;
+                }
+                
                 lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
             } else {
                 // Show image, hide YouTube
                 lightboxYoutube.style.display = 'none';
-                lightboxYoutube.src = ''; // Stop YouTube video
                 lightboxImage.style.display = 'block';
                 lightboxImage.classList.add('fade');
+                
+                // Reset YouTube playing state when leaving video
+                isYoutubePlaying = false;
+                
                 setTimeout(() => {
                     lightboxImage.src = item.src;
                     lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
                     lightboxImage.classList.remove('fade');
                 }, 250);
-                
-                // Restart auto-play when leaving YouTube video
-                if (currentImageIndex !== 0) { // Don't restart if we're on first slide
-                    startAutoPlay();
-                }
             }
         }
 
