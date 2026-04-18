@@ -2308,7 +2308,7 @@
 
         // Gallery images (excluding chariot.jpeg) - First item is YouTube video
         const galleryImages = [
-            { type: 'youtube', src: 'https://www.youtube.com/embed/vRfLahVeLdU?enablejsapi=1&modestbranding=1&rel=0&showinfo=0&controls=1' },
+            { type: 'youtube', src: 'https://www.youtube.com/embed/vRfLahVeLdU?enablejsapi=1&modestbranding=1&rel=0&showinfo=0&controls=1&origin=' + window.location.origin },
             { type: 'image', src: 'pics/01.jpg' },
             { type: 'image', src: 'pics/02.jpg' },
             { type: 'image', src: 'pics/03.jpg' },
@@ -2399,22 +2399,44 @@
             if (event.origin !== 'https://www.youtube.com') return;
             
             try {
-                const data = JSON.parse(event.data);
+                let data;
+                // YouTube can send data as string or object
+                if (typeof event.data === 'string') {
+                    data = JSON.parse(event.data);
+                } else {
+                    data = event.data;
+                }
                 
-                // YouTube player state: 1 = playing, 2 = paused, 0 = ended
+                // YouTube player state: 1 = playing, 2 = paused, 0 = ended, -1 = unstarted
                 if (data.event === 'infoDelivery' && data.info && data.info.playerState !== undefined) {
                     const playerState = data.info.playerState;
                     
                     if (playerState === 1) {
                         // Video is playing - pause slideshow
                         isYoutubePlaying = true;
-                    } else if (playerState === 2 || playerState === 0) {
-                        // Video is paused or ended - resume slideshow
+                        console.log('YouTube playing - pausing slideshow');
+                    } else if (playerState === 2 || playerState === 0 || playerState === -1) {
+                        // Video is paused, ended, or unstarted - resume slideshow
                         isYoutubePlaying = false;
+                        console.log('YouTube paused/ended - resuming slideshow');
+                    }
+                }
+                
+                // Also listen for onStateChange events
+                if (data.event === 'onStateChange') {
+                    const playerState = data.info;
+                    
+                    if (playerState === 1) {
+                        isYoutubePlaying = true;
+                        console.log('YouTube playing (onStateChange) - pausing slideshow');
+                    } else {
+                        isYoutubePlaying = false;
+                        console.log('YouTube paused/ended (onStateChange) - resuming slideshow');
                     }
                 }
             } catch (e) {
                 // Ignore parsing errors
+                console.log('YouTube message parse error:', e);
             }
         });
 
