@@ -1413,7 +1413,9 @@
     <!-- Section 4: Katha Upanishad - The Chariot -->
     <section class="sanskrit-section" id="chariotSection" style="background: #0a1628; padding: 6rem 0; position: relative; overflow: hidden;">
         <!-- Background Video -->
-        <iframe id="chariotVideo" style="position: absolute; top: 50%; left: 50%; width: 100vw; height: 100vh; transform: translate(-50%, -50%) scale(1.5); opacity: 0.35; z-index: 0; pointer-events: none; border: none;" src="https://www.youtube.com/embed/0Tnge4d0Vw0?autoplay=1&mute=1&loop=1&playlist=0Tnge4d0Vw0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <video autoplay muted loop playsinline id="chariotVideo" style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); opacity: 0.35; z-index: 0; object-fit: cover;">
+            <source src="video/chariot-video.mp4" type="video/mp4">
+        </video>
         
         <!-- Hover Spotlight Effect -->
         <div id="chariotSpotlight" style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%); pointer-events: none; z-index: 1; opacity: 0; transition: opacity 0.3s ease; mix-blend-mode: screen;"></div>
