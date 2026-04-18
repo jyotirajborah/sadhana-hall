@@ -811,84 +811,66 @@
             stroke-width: 2;
         }
 
-        /* Decorative Motifs */
-        .motif-corner {
+        /* Decorative Motifs - Large Animated */
+        .motif-large {
             position: absolute;
-            opacity: 0.25;
             pointer-events: none;
+            opacity: 0.12;
             z-index: 1;
         }
 
-        .motif-corner.top-left {
-            top: 1rem;
-            left: 1rem;
-            width: 120px;
-            height: 120px;
+        .motif-huge {
+            width: 400px;
+            height: 400px;
         }
 
-        .motif-corner.top-right {
-            top: 1rem;
-            right: 1rem;
-            width: 120px;
-            height: 120px;
-            transform: scaleX(-1);
+        .motif-mega {
+            width: 600px;
+            height: 600px;
         }
 
-        .motif-corner.bottom-left {
-            bottom: 1rem;
-            left: 1rem;
-            width: 120px;
-            height: 120px;
-            transform: scaleY(-1);
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-30px) rotate(5deg);
+            }
         }
 
-        .motif-corner.bottom-right {
-            bottom: 1rem;
-            right: 1rem;
-            width: 120px;
-            height: 120px;
-            transform: scale(-1);
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.12;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.18;
+            }
         }
 
-        .motif-divider {
-            text-align: center;
-            margin: 2rem auto;
-            opacity: 0.4;
+        /* Rotate Animation */
+        @keyframes rotate-slow {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
-        .motif-divider img {
-            width: 150px;
-            height: auto;
+        .motif-float {
+            animation: float 8s ease-in-out infinite;
         }
 
-        .motif-header-accent {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .motif-pulse {
+            animation: pulse 6s ease-in-out infinite;
         }
 
-        .motif-header-accent img {
-            width: 60px;
-            height: 60px;
-            opacity: 0.5;
-        }
-
-        .motif-background {
-            position: absolute;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        .motif-background.large {
-            width: 200px;
-            height: 200px;
-        }
-
-        .motif-background.medium {
-            width: 150px;
-            height: 150px;
+        .motif-rotate {
+            animation: rotate-slow 60s linear infinite;
         }
 
         /* Lightbox Gallery */
@@ -1304,20 +1286,14 @@
     </section>
 
     <!-- Section 3: Why This Project is Needed -->
-    <section class="story" id="story" style="position: relative;">
-        <!-- Decorative Motifs -->
-        <img src="motiff/1.png" class="motif-corner top-left" alt="">
-        <img src="motiff/2.png" class="motif-corner top-right" alt="">
-        <img src="motiff/3.png" class="motif-corner bottom-left" alt="">
-        <img src="motiff/4.png" class="motif-corner bottom-right" alt="">
+    <section class="story" id="story" style="position: relative; overflow: hidden;">
+        <!-- Large Animated Motifs -->
+        <img src="motiff/1.png" class="motif-large motif-huge motif-float" alt="" style="top: -100px; right: -100px;">
+        <img src="motiff/Paisley (1).png" class="motif-large motif-mega motif-pulse" alt="" style="bottom: -200px; left: -150px; opacity: 0.08;">
         
         <div class="story-container">
             <div class="story-header reveal">
-                <div class="motif-header-accent">
-                    <img src="motiff/5.png" alt="">
-                    <h2 class="section-title">Why This Project is Needed</h2>
-                    <img src="motiff/6.png" alt="" style="transform: scaleX(-1);">
-                </div>
+                <h2 class="section-title">Why This Project is Needed</h2>
             </div>
 
             <div class="horizontal-cards-container" style="display: flex; gap: 1.5rem; margin-top: 6rem; padding: 2rem 0; justify-content: space-between; align-items: stretch;">
@@ -1372,14 +1348,11 @@
         <!-- Dark Overlay -->
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 22, 40, 0.70) 0%, rgba(10, 22, 40, 0.65) 50%, rgba(10, 22, 40, 0.70) 100%); z-index: 1; transition: opacity 0.3s ease;" id="chariotOverlay"></div>
         
-        <!-- Decorative Motifs -->
-        <img src="motiff/Paisley (1).png" class="motif-corner top-left" alt="" style="opacity: 0.2; z-index: 2; filter: brightness(0) invert(1);">
-        <img src="motiff/Paisley (1).png" class="motif-corner top-right" alt="" style="opacity: 0.2; z-index: 2; filter: brightness(0) invert(1);">
+        <!-- Large Animated Motifs -->
+        <img src="motiff/3.png" class="motif-large motif-huge motif-rotate" alt="" style="top: -150px; left: -100px; z-index: 2; opacity: 0.1; filter: brightness(0) invert(1);">
+        <img src="motiff/4.png" class="motif-large motif-huge motif-float" alt="" style="bottom: -150px; right: -100px; z-index: 2; opacity: 0.1; filter: brightness(0) invert(1);">
         
         <div class="sanskrit-container reveal" style="max-width: 900px; margin: 0 auto; padding: 0 4rem; text-align: center; position: relative; z-index: 2;">
-            <div class="motif-divider" style="margin-bottom: 1rem;">
-                <img src="motiff/5.png" alt="" style="filter: brightness(0) invert(1); opacity: 0.6; width: 80px;">
-            </div>
             <h2 style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: #d4a574; margin-bottom: 1.5rem; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);">The Chariot of Life</h2>
             <p style="color: #ffffff; font-size: 1.1rem; margin-bottom: 2rem; text-align: center; line-height: 1.8; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);">
                 The Katha Upanishad compares a human being to a chariot moving on the path of life.
@@ -1412,27 +1385,15 @@
     </section>
 
     <!-- Section 5: Key Components -->
-    <section class="programs" id="components" style="position: relative;">
-        <!-- Decorative Motifs -->
-        <img src="motiff/3.png" class="motif-corner top-left" alt="">
-        <img src="motiff/4.png" class="motif-corner top-right" alt="">
-        <img src="motiff/1.png" class="motif-corner bottom-left" alt="">
-        <img src="motiff/2.png" class="motif-corner bottom-right" alt="">
-        
-        <!-- Background Motifs -->
-        <img src="motiff/5.png" class="motif-background large" alt="" style="top: 30%; left: 5%; transform: rotate(-15deg);">
-        <img src="motiff/6.png" class="motif-background large" alt="" style="top: 60%; right: 5%; transform: rotate(15deg);">
+    <section class="programs" id="components" style="position: relative; overflow: hidden;">
+        <!-- Large Animated Motifs -->
+        <img src="motiff/2.png" class="motif-large motif-mega motif-pulse" alt="" style="top: -250px; left: -200px;">
+        <img src="motiff/5.png" class="motif-large motif-huge motif-float" alt="" style="top: 50%; right: -150px; transform: translateY(-50%);">
+        <img src="motiff/6.png" class="motif-large motif-huge motif-rotate" alt="" style="bottom: -100px; left: 10%; opacity: 0.08;">
         
         <div class="programs-container">
             <div class="story-header reveal">
-                <div class="motif-header-accent">
-                    <img src="motiff/1.png" alt="">
-                    <h2 class="section-title">Key Components</h2>
-                    <img src="motiff/2.png" alt="" style="transform: scaleX(-1);">
-                </div>
-                <div class="motif-divider reveal">
-                    <img src="motiff/Paisley (1).png" alt="">
-                </div>
+                <h2 class="section-title">Key Components</h2>
                 <p style="max-width: 900px; margin: 2rem auto 0; font-size: 1.125rem; line-height: 1.8; color: var(--slate); text-align: justify;">
                     UPASANA is designed as a comprehensive ecosystem that nurtures the mind, body, and spirit. Each facility has been thoughtfully planned to create an integrated environment where ancient wisdom meets modern wellness practices. From dedicated meditation spaces that foster inner peace to cultural academies preserving our rich heritage, every component serves a unique purpose in our holistic approach to personal and community development. These interconnected facilities work in harmony to provide a transformative experience for individuals seeking balance, growth, and connection with their deeper selves while contributing to the broader community's wellbeing.
                 </p>
@@ -1532,24 +1493,14 @@
     </section>
 
     <!-- Section 6: Program Design -->
-    <section class="programs" id="programs" style="background: var(--midnight); padding: 10rem 0; position: relative;">
-        <!-- Decorative Motifs -->
-        <img src="motiff/5.png" class="motif-corner top-left" alt="" style="opacity: 0.15;">
-        <img src="motiff/6.png" class="motif-corner top-right" alt="" style="opacity: 0.15;">
-        <img src="motiff/3.png" class="motif-corner bottom-left" alt="" style="opacity: 0.15;">
-        <img src="motiff/4.png" class="motif-corner bottom-right" alt="" style="opacity: 0.15;">
-        
-        <!-- Background Motifs -->
-        <img src="motiff/1.png" class="motif-background medium" alt="" style="top: 20%; left: 10%; transform: rotate(20deg); opacity: 0.05;">
-        <img src="motiff/2.png" class="motif-background medium" alt="" style="bottom: 20%; right: 10%; transform: rotate(-20deg); opacity: 0.05;">
+    <section class="programs" id="programs" style="background: var(--midnight); padding: 10rem 0; position: relative; overflow: hidden;">
+        <!-- Large Animated Motifs -->
+        <img src="motiff/Paisley (1).png" class="motif-large motif-mega motif-rotate" alt="" style="top: -200px; right: -200px; opacity: 0.08; filter: brightness(0) invert(1);">
+        <img src="motiff/4.png" class="motif-large motif-huge motif-pulse" alt="" style="bottom: -100px; left: -100px; opacity: 0.1; filter: brightness(0) invert(1);">
         
         <div class="programs-container" style="max-width: 1400px; margin: 0 auto; padding: 0 4rem;">
             <div class="story-header reveal">
-                <div class="motif-header-accent">
-                    <img src="motiff/Paisley (1).png" alt="" style="filter: brightness(0) invert(1);">
-                    <h2 class="section-title" style="color: white;">Program Design</h2>
-                    <img src="motiff/Paisley (1).png" alt="" style="filter: brightness(0) invert(1); transform: scaleX(-1);">
-                </div>
+                <h2 class="section-title" style="color: white;">Program Design</h2>
             </div>
 
             <div class="programs-grid" style="margin-top: 6rem;">
@@ -1649,18 +1600,14 @@
     </section>
 
     <!-- Section 7: Impact Projection -->
-    <section class="programs" id="impact" style="background: var(--cream); position: relative;">
-        <!-- Decorative Motifs -->
-        <img src="motiff/2.png" class="motif-corner top-left" alt="">
-        <img src="motiff/1.png" class="motif-corner top-right" alt="">
+    <section class="programs" id="impact" style="background: var(--cream); position: relative; overflow: hidden;">
+        <!-- Large Animated Motifs -->
+        <img src="motiff/3.png" class="motif-large motif-huge motif-float" alt="" style="top: -100px; left: -100px;">
+        <img src="motiff/6.png" class="motif-large motif-huge motif-pulse" alt="" style="bottom: -100px; right: -100px;">
         
         <div class="programs-container">
             <div class="story-header reveal">
-                <div class="motif-header-accent">
-                    <img src="motiff/3.png" alt="">
-                    <h2 class="section-title">Impact Projection - 3 Years</h2>
-                    <img src="motiff/4.png" alt="" style="transform: scaleX(-1);">
-                </div>
+                <h2 class="section-title">Impact Projection - 3 Years</h2>
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; margin-top: 6rem;">
@@ -1702,18 +1649,14 @@
     </section>
 
     <!-- Section 9: Implementation Plan -->
-    <section class="programs" style="background: var(--cream); position: relative;">
-        <!-- Decorative Motifs -->
-        <img src="motiff/4.png" class="motif-corner top-left" alt="">
-        <img src="motiff/3.png" class="motif-corner top-right" alt="">
+    <section class="programs" style="background: var(--cream); position: relative; overflow: hidden;">
+        <!-- Large Animated Motifs -->
+        <img src="motiff/5.png" class="motif-large motif-huge motif-rotate" alt="" style="top: 50%; left: -150px; transform: translateY(-50%);">
+        <img src="motiff/2.png" class="motif-large motif-huge motif-float" alt="" style="top: 20%; right: -100px;">
         
         <div class="programs-container">
             <div class="story-header reveal">
-                <div class="motif-header-accent">
-                    <img src="motiff/5.png" alt="">
-                    <h2 class="section-title">Implementation Plan</h2>
-                    <img src="motiff/6.png" alt="" style="transform: scaleX(-1);">
-                </div>
+                <h2 class="section-title">Implementation Plan</h2>
             </div>
 
             <div class="philosophy-grid" style="grid-template-columns: repeat(3, 1fr); margin-top: 6rem;">
@@ -1734,20 +1677,14 @@
     </section>
 
     <!-- Section 10: Focus Areas -->
-    <section class="impact" style="position: relative;">
-        <!-- Decorative Motifs -->
-        <img src="motiff/5.png" class="motif-corner top-left" alt="" style="opacity: 0.15;">
-        <img src="motiff/6.png" class="motif-corner top-right" alt="" style="opacity: 0.15;">
-        <img src="motiff/1.png" class="motif-corner bottom-left" alt="" style="opacity: 0.15;">
-        <img src="motiff/2.png" class="motif-corner bottom-right" alt="" style="opacity: 0.15;">
+    <section class="impact" style="position: relative; overflow: hidden;">
+        <!-- Large Animated Motifs -->
+        <img src="motiff/1.png" class="motif-large motif-mega motif-pulse" alt="" style="top: -250px; left: -200px; opacity: 0.1; filter: brightness(0) invert(1);">
+        <img src="motiff/Paisley (1).png" class="motif-large motif-huge motif-rotate" alt="" style="bottom: -150px; right: -150px; opacity: 0.08; filter: brightness(0) invert(1);">
         
         <div class="impact-container">
             <div class="story-header reveal">
-                <div class="motif-header-accent">
-                    <img src="motiff/Paisley (1).png" alt="" style="filter: brightness(0) invert(1);">
-                    <h2 class="section-title" style="color: white;">Focus Areas</h2>
-                    <img src="motiff/Paisley (1).png" alt="" style="filter: brightness(0) invert(1); transform: scaleX(-1);">
-                </div>
+                <h2 class="section-title" style="color: white;">Focus Areas</h2>
             </div>
 
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem; margin-top: 6rem;">
