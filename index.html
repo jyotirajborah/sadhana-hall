@@ -1764,8 +1764,18 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-container reveal">
+    <section class="cta-section" style="position: relative; overflow: hidden;">
+        <!-- Left M3 Motif (50% visible) -->
+        <div style="position: absolute; left: -400px; top: 50%; transform: translateY(-50%); width: 800px; height: 800px; opacity: 0.15; z-index: 0;">
+            <img src="motiff/M3.png" alt="" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        
+        <!-- Right M3 Motif (50% visible) -->
+        <div style="position: absolute; right: -400px; top: 50%; transform: translateY(-50%); width: 800px; height: 800px; opacity: 0.15; z-index: 0;">
+            <img src="motiff/M3.png" alt="" style="width: 100%; height: 100%; object-fit: contain;">
+        </div>
+        
+        <div class="cta-container reveal" style="position: relative; z-index: 1;">
             <h2>UPASANA</h2>
             <p style="font-size: 1.5rem; margin-bottom: 2rem;">Integrated Yoga, Meditation & Cultural Education Centre</p>
             
