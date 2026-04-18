@@ -1721,6 +1721,12 @@
                 if (isYoutubePlaying) {
                     return;
                 }
+                
+                // Don't auto-advance if we're on the first slide (YouTube video)
+                if (currentImageIndex === 0) {
+                    return;
+                }
+                
                 currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
                 showImage(currentImageIndex);
             }, 3000); // Change image every 3 seconds
