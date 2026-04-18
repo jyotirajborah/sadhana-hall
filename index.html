@@ -1074,6 +1074,21 @@
             line-height: 1.8;
         }
 
+        .impact-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+            background: rgba(212, 165, 116, 0.1) !important;
+            border-color: var(--gold) !important;
+            box-shadow: 0 20px 40px rgba(212, 165, 116, 0.2);
+        }
+
+        .impact-card:hover h4 {
+            color: var(--gold);
+        }
+
         /* Footer */
         footer {
             background: var(--midnight);
@@ -1606,8 +1621,47 @@
     <section class="cta-section">
         <div class="cta-container reveal">
             <h2>UPASANA</h2>
-            <p>Integrated Yoga, Meditation & Cultural Education Centre</p>
-            <a href="#invest" class="btn btn-primary">Support Us</a>
+            <p style="font-size: 1.5rem; margin-bottom: 2rem;">Integrated Yoga, Meditation & Cultural Education Centre</p>
+            
+            <div style="max-width: 800px; margin: 3rem auto;">
+                <h3 style="color: var(--gold); font-size: 2rem; margin-bottom: 1.5rem; font-family: 'Libre Baskerville', serif;">Be Part of This Transformation</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; color: rgba(255, 255, 255, 0.85); margin-bottom: 2rem;">
+                    Your contribution will help build a sanctuary where ancient wisdom meets modern wellness. Every donation brings us closer to creating a space that will transform thousands of lives through yoga, meditation, and cultural education.
+                </p>
+            </div>
+
+            <div class="donation-impact" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 3rem auto; max-width: 1000px;">
+                <div class="impact-card" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid rgba(212, 165, 116, 0.3); transition: all 0.3s ease;">
+                    <div style="font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem;">🧘</div>
+                    <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Meditation Halls</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem;">Create peaceful spaces for inner transformation</p>
+                </div>
+                <div class="impact-card" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid rgba(212, 165, 116, 0.3); transition: all 0.3s ease;">
+                    <div style="font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem;">🎭</div>
+                    <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Cultural Academy</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem;">Preserve and promote our rich heritage</p>
+                </div>
+                <div class="impact-card" style="background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; border: 1px solid rgba(212, 165, 116, 0.3); transition: all 0.3s ease;">
+                    <div style="font-size: 2.5rem; color: var(--gold); margin-bottom: 1rem;">📚</div>
+                    <h4 style="color: white; font-size: 1.25rem; margin-bottom: 0.5rem;">Knowledge Library</h4>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.95rem;">Build a repository of ancient wisdom</p>
+                </div>
+            </div>
+
+            <div style="margin: 3rem auto; max-width: 700px;">
+                <p style="font-size: 1.15rem; color: var(--gold); font-weight: 600; margin-bottom: 1rem;">
+                    "The best time to plant a tree was 20 years ago. The second best time is now."
+                </p>
+                <p style="font-size: 1rem; color: rgba(255, 255, 255, 0.8); margin-bottom: 2.5rem;">
+                    Join us in planting the seeds of wellness, culture, and spiritual growth that will benefit generations to come.
+                </p>
+            </div>
+
+            <a href="#invest" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.25rem 3rem;">Support This Vision</a>
+            
+            <p style="margin-top: 2rem; font-size: 0.95rem; color: rgba(255, 255, 255, 0.6);">
+                Every contribution, big or small, makes a meaningful difference
+            </p>
         </div>
     </section>
 
