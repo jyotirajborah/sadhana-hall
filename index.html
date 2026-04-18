@@ -1422,12 +1422,12 @@
         <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 22, 40, 0.70) 0%, rgba(10, 22, 40, 0.65) 50%, rgba(10, 22, 40, 0.70) 100%); z-index: 1; transition: opacity 0.3s ease;" id="chariotOverlay"></div>
         
         <div class="sanskrit-container reveal" style="max-width: 900px; margin: 0 auto; padding: 0 4rem; text-align: center; position: relative; z-index: 2;">
-            <h2 style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: #d4a574; margin-bottom: 1.5rem; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);">The Chariot of Life</h2>
-            <p style="color: #ffffff; font-size: 1.1rem; margin-bottom: 2rem; text-align: center; line-height: 1.8; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);">
+            <h2 class="chariot-hover-element" style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: #d4a574; margin-bottom: 1.5rem; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); transition: opacity 0.3s ease; cursor: pointer;">The Chariot of Life</h2>
+            <p class="chariot-hover-element" style="color: #ffffff; font-size: 1.1rem; margin-bottom: 2rem; text-align: center; line-height: 1.8; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); transition: opacity 0.3s ease; cursor: pointer;">
                 The Katha Upanishad compares a human being to a chariot moving on the path of life.
             </p>
             
-            <div class="sanskrit-text" style="font-family: 'Crimson Pro', serif; font-size: 1.75rem; line-height: 2; color: #f5c842; font-style: italic; margin: 2rem auto; font-weight: 400; text-align: center; text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9); max-width: 800px;">
+            <div class="sanskrit-text chariot-hover-element" style="font-family: 'Crimson Pro', serif; font-size: 1.75rem; line-height: 2; color: #f5c842; font-style: italic; margin: 2rem auto; font-weight: 400; text-align: center; text-shadow: 0 3px 15px rgba(0, 0, 0, 0.9); max-width: 800px; transition: opacity 0.3s ease; cursor: pointer;">
                 आत्मानं रथिनं विद्धि शरीरं रथमेव तु ।<br>
                 बुद्धिं तु सारथिं विद्धि मनः प्रग्रहमेव च ॥<br>
                 इन्द्रियाणि हयानाहुर्विषयांस्तेषु गोचरान् ।<br>
@@ -1435,7 +1435,7 @@
             </div>
             
             <div class="philosophy-explanation" style="font-size: 1.1rem; line-height: 1.8; color: #ffffff; text-align: center; margin-top: 2.5rem; font-weight: 400; max-width: 800px; margin-left: auto; margin-right: auto; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);">
-                <p style="margin-bottom: 1.5rem; text-align: center;">
+                <p class="chariot-hover-element" style="margin-bottom: 1.5rem; text-align: center; transition: opacity 0.3s ease; cursor: pointer;">
                     In this imagery, the <strong style="color: #f5c842;">soul (Atman)</strong> is the master of the chariot, 
                     the <strong style="color: #f5c842;">body</strong> is the chariot itself, 
                     the <strong style="color: #f5c842;">intellect (buddhi)</strong> is the charioteer who guides the journey, 
@@ -1443,7 +1443,7 @@
                     The <strong style="color: #f5c842;">senses</strong> are compared to the horses, 
                     while the objects of the world are the paths on which these horses run.
                 </p>
-                <p style="margin-bottom: 0; text-align: center;">
+                <p class="chariot-hover-element" style="margin-bottom: 0; text-align: center; transition: opacity 0.3s ease; cursor: pointer;">
                     The message is simple yet profound: the quality of our life's journey depends on who is truly in control. 
                     If the charioteer is alert and the reins are held firmly, the horses move in the right direction, and 
                     the chariot reaches its destination safely. But if the reins are loose and the horses run wild, the 
@@ -2637,6 +2637,17 @@
                 chariotSpotlight.style.top = (y - 150) + 'px';
             });
         }
+
+        // Individual hover effects for chariot text elements
+        const chariotHoverElements = document.querySelectorAll('.chariot-hover-element');
+        chariotHoverElements.forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.opacity = '0';
+            });
+            element.addEventListener('mouseleave', function() {
+                this.style.opacity = '1';
+            });
+        });
 
         // Governance section hover effect
         const governanceTitle = document.querySelector('.governance-title');
