@@ -1295,6 +1295,7 @@
             /* Navigation */
             nav {
                 padding: 1rem 1.5rem !important;
+                justify-content: center !important;
             }
 
             .nav-menu {
@@ -1312,22 +1313,30 @@
                 padding: 8rem 0 4rem !important;
             }
             
+            .hero-content {
+                text-align: center !important;
+            }
+            
             .hero h1 {
                 font-size: clamp(2.5rem, 10vw, 4rem) !important;
+                text-align: center !important;
             }
             
             .hero-tagline {
                 font-size: clamp(1.125rem, 4vw, 1.5rem) !important;
+                text-align: center !important;
             }
             
             .hero-description {
                 font-size: 0.9375rem !important;
                 padding: 0 1rem !important;
+                text-align: center !important;
             }
             
             .hero-cta {
                 flex-direction: column !important;
                 gap: 1rem !important;
+                align-items: center !important;
             }
             
             .btn {
@@ -1351,6 +1360,10 @@
                 grid-template-columns: 1fr !important;
                 gap: 2rem !important;
                 padding: 0 1.5rem !important;
+            }
+            
+            .stat-item {
+                text-align: center !important;
             }
             
             .stat-item::after {
@@ -1377,21 +1390,31 @@
                 padding: 0 1.5rem !important;
             }
             
+            /* Section Headers */
+            .story-header,
+            .story-header * {
+                text-align: center !important;
+            }
+            
             /* Section Titles */
             .section-title {
                 font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
                 line-height: 1.2 !important;
+                text-align: center !important;
             }
             
             .section-description,
             [style*="font-size: 1.125rem"] {
                 font-size: 1rem !important;
+                text-align: center !important;
             }
             
             /* Motifs */
             img[src*="motiff"] {
                 height: 60px !important;
                 max-width: 100% !important;
+                display: block !important;
+                margin: 0 auto !important;
             }
 
             /* Why This Project - Horizontal Cards */
@@ -1401,16 +1424,30 @@
                 gap: 1.5rem !important;
             }
             
+            .need-card {
+                text-align: center !important;
+            }
+            
             .need-card img {
                 height: 180px !important;
             }
             
             .need-card h3 {
                 font-size: 1.25rem !important;
+                text-align: center !important;
             }
             
             .need-card p {
                 font-size: 0.9375rem !important;
+                text-align: center !important;
+            }
+            
+            .need-card > div {
+                text-align: center !important;
+            }
+            
+            .need-card > div > div {
+                text-align: center !important;
             }
 
             /* Chariot Section */
@@ -1420,23 +1457,32 @@
             
             .sanskrit-container {
                 padding: 0 1.5rem !important;
+                text-align: center !important;
             }
             
             .sanskrit-section h2 {
                 font-size: 1.75rem !important;
+                text-align: center !important;
             }
             
             .sanskrit-section > div > div > p {
                 font-size: 0.9375rem !important;
+                text-align: center !important;
             }
             
             .sanskrit-text {
                 font-size: 1.125rem !important;
                 line-height: 1.8 !important;
+                text-align: center !important;
+            }
+            
+            .philosophy-explanation {
+                text-align: center !important;
             }
             
             .philosophy-explanation p {
                 font-size: 0.9375rem !important;
+                text-align: center !important;
             }
 
             /* Key Components */
@@ -1454,11 +1500,17 @@
             .component-row h3,
             [style*="font-size: 2rem"] {
                 font-size: 1.5rem !important;
+                text-align: center !important;
             }
             
             .component-row p {
                 font-size: 1rem !important;
                 margin-bottom: 1.5rem !important;
+                text-align: center !important;
+            }
+            
+            .component-row > div {
+                text-align: center !important;
             }
             
             /* Benefit boxes - single column on mobile */
@@ -1469,14 +1521,25 @@
             
             [style*="grid-template-columns: repeat(3, 1fr)"] > div {
                 padding: 1.5rem 1.25rem !important;
+                text-align: center !important;
             }
             
             [style*="grid-template-columns: repeat(3, 1fr)"] h4 {
                 font-size: 0.9375rem !important;
+                text-align: center !important;
             }
             
             [style*="grid-template-columns: repeat(3, 1fr)"] p {
                 font-size: 0.875rem !important;
+                text-align: center !important;
+            }
+            
+            [style*="grid-template-columns: repeat(3, 1fr)"] svg {
+                margin: 0 auto !important;
+            }
+            
+            [style*="grid-template-columns: repeat(3, 1fr)"] > div > div:first-child {
+                margin: 0 auto !important;
             }
 
             /* Program Design Cards */
@@ -1488,6 +1551,7 @@
             
             .program-card {
                 padding: 0 !important;
+                text-align: center !important;
             }
             
             .program-card img {
@@ -1500,6 +1564,11 @@
             
             .program-card h3 {
                 font-size: 1.375rem !important;
+                text-align: center !important;
+            }
+            
+            .program-card ul {
+                text-align: left !important;
             }
 
             /* Impact Projection Stats */
@@ -1510,36 +1579,48 @@
             
             .philosophy-card {
                 margin-bottom: 0 !important;
+                text-align: center !important;
             }
             
             .philosophy-card > div {
                 padding: 2.5rem 2rem !important;
+                text-align: center !important;
+            }
+            
+            .philosophy-card > div > div {
+                justify-content: center !important;
             }
             
             .philosophy-number,
             [data-target] {
                 font-size: 3rem !important;
+                text-align: center !important;
             }
             
             .philosophy-card h3 {
                 font-size: 1.25rem !important;
+                text-align: center !important;
             }
             
             .philosophy-card p {
                 font-size: 0.875rem !important;
+                text-align: center !important;
             }
 
             /* Employee Wellness Card */
             .reveal > div {
                 padding: 2rem 1.5rem !important;
+                text-align: center !important;
             }
             
             .reveal > div h3 {
                 font-size: 1.5rem !important;
+                text-align: center !important;
             }
             
             .reveal > div > p {
                 font-size: 1rem !important;
+                text-align: center !important;
             }
             
             .reveal > div > div {
@@ -1568,16 +1649,27 @@
                 margin-top: 3rem !important;
             }
             
+            .implementation-card {
+                text-align: center !important;
+            }
+            
             .implementation-card .card-header {
                 padding: 1.5rem !important;
+                text-align: center !important;
+            }
+            
+            .implementation-card > div:last-child {
+                text-align: center !important;
             }
             
             .implementation-card h4 {
                 font-size: 1.125rem !important;
+                text-align: center !important;
             }
             
             .implementation-card p {
                 font-size: 0.875rem !important;
+                text-align: center !important;
             }
 
             /* Focus Areas */
@@ -1586,34 +1678,53 @@
                 gap: 2rem !important;
             }
             
+            .focus-card {
+                text-align: center !important;
+            }
+            
             .focus-card svg {
                 width: 60px !important;
                 height: 60px !important;
+                margin: 0 auto !important;
             }
             
             .focus-card h3 {
                 font-size: 1.5rem !important;
+                text-align: center !important;
+            }
+            
+            .focus-card p {
+                text-align: center !important;
             }
 
             /* CTA Section */
             .cta-section {
                 padding: 3rem 0 !important;
+                text-align: center !important;
             }
             
             .cta-container {
                 padding: 0 1.5rem !important;
+                text-align: center !important;
             }
             
             .cta-section h2 {
                 font-size: clamp(1.75rem, 7vw, 2.5rem) !important;
+                text-align: center !important;
             }
             
             .cta-section h3 {
                 font-size: 1.5rem !important;
+                text-align: center !important;
             }
             
             .cta-section p {
                 font-size: 0.9375rem !important;
+                text-align: center !important;
+            }
+            
+            .cta-section .btn {
+                margin: 0 auto !important;
             }
             
             /* Hide rotating motifs on mobile */
@@ -1661,6 +1772,7 @@
             .lightbox-counter {
                 bottom: 1rem !important;
                 font-size: 0.875rem !important;
+                text-align: center !important;
             }
 
             /* Back to Top Button */
