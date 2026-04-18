@@ -1641,7 +1641,10 @@
         <div class="lightbox-content">
             <button class="lightbox-close" id="lightboxClose">&times;</button>
             <button class="lightbox-nav lightbox-prev" id="lightboxPrev">‹</button>
-            <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery Image">
+            <img class="lightbox-image" id="lightboxImage" src="" alt="Gallery Image" style="display: none;">
+            <video class="lightbox-image" id="lightboxVideo" controls style="display: none;">
+                <source src="" type="video/mp4">
+            </video>
             <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
             <div class="lightbox-counter" id="lightboxCounter"></div>
         </div>
@@ -1683,16 +1686,17 @@
             setTimeout(typeText, 2000);
         }
 
-        // Gallery images (excluding chariot.jpeg)
+        // Gallery images (excluding chariot.jpeg) - First item is video
         const galleryImages = [
-            'pics/01.jpg',
-            'pics/02.jpg',
-            'pics/03.jpg',
-            'pics/04.jpg',
-            'pics/05.jpg',
-            'pics/06.jpg',
-            'pics/07.jpg',
-            'pics/08.jpg'
+            { type: 'video', src: 'video/new_upasana_video.mp4' },
+            { type: 'image', src: 'pics/01.jpg' },
+            { type: 'image', src: 'pics/02.jpg' },
+            { type: 'image', src: 'pics/03.jpg' },
+            { type: 'image', src: 'pics/04.jpg' },
+            { type: 'image', src: 'pics/05.jpg' },
+            { type: 'image', src: 'pics/06.jpg' },
+            { type: 'image', src: 'pics/07.jpg' },
+            { type: 'image', src: 'pics/08.jpg' }
         ];
 
         let currentGalleryImages = galleryImages; // Active gallery images
@@ -1703,6 +1707,7 @@
         const viewGalleryBtn = document.getElementById('viewGalleryBtn');
         const lightbox = document.getElementById('lightbox');
         const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxVideo = document.getElementById('lightboxVideo');
         const lightboxClose = document.getElementById('lightboxClose');
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
@@ -1788,14 +1793,34 @@
             }
         });
 
-        // Show image with fade effect
+        // Show image or video with fade effect
         function showImage(index) {
-            lightboxImage.classList.add('fade');
-            setTimeout(() => {
-                lightboxImage.src = currentGalleryImages[index];
+            const item = currentGalleryImages[index];
+            
+            // Pause video if switching away from it
+            if (lightboxVideo.style.display === 'block') {
+                lightboxVideo.pause();
+            }
+            
+            if (item.type === 'video') {
+                // Show video, hide image
+                lightboxImage.style.display = 'none';
+                lightboxVideo.style.display = 'block';
+                lightboxVideo.querySelector('source').src = item.src;
+                lightboxVideo.load();
+                lightboxVideo.play();
                 lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
-                lightboxImage.classList.remove('fade');
-            }, 250);
+            } else {
+                // Show image, hide video
+                lightboxVideo.style.display = 'none';
+                lightboxImage.style.display = 'block';
+                lightboxImage.classList.add('fade');
+                setTimeout(() => {
+                    lightboxImage.src = item.src;
+                    lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
+                    lightboxImage.classList.remove('fade');
+                }, 250);
+            }
         }
 
         // Video fallback handler
@@ -2006,20 +2031,20 @@
         // Focus Area Cards - Show category images
         const focusImages = {
             education: [
-                'pics/edu/Title image.png',
-                'pics/edu/1st Short term course.png',
-                'pics/edu/3rd - Identification & promotion of talent.png'
+                { type: 'image', src: 'pics/edu/Title image.png' },
+                { type: 'image', src: 'pics/edu/1st Short term course.png' },
+                { type: 'image', src: 'pics/edu/3rd - Identification & promotion of talent.png' }
             ],
             health: [
-                'pics/health/1st Eye and Dental camps.png',
-                'pics/health/3rd Daily OPD.png',
-                'pics/health/4th Homeopathy.JPG'
+                { type: 'image', src: 'pics/health/1st Eye and Dental camps.png' },
+                { type: 'image', src: 'pics/health/3rd Daily OPD.png' },
+                { type: 'image', src: 'pics/health/4th Homeopathy.JPG' }
             ],
             philanthropy: [
-                'pics/philanthropy/31_Uplifting Standards_Title Image_260424.png',
-                'pics/philanthropy/1st Image(Cyclone) _060424.png',
-                'pics/philanthropy/MG_7611.jpg',
-                'pics/philanthropy/DSC08248.jpg'
+                { type: 'image', src: 'pics/philanthropy/31_Uplifting Standards_Title Image_260424.png' },
+                { type: 'image', src: 'pics/philanthropy/1st Image(Cyclone) _060424.png' },
+                { type: 'image', src: 'pics/philanthropy/MG_7611.jpg' },
+                { type: 'image', src: 'pics/philanthropy/DSC08248.jpg' }
             ]
         };
 
