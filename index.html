@@ -1961,17 +1961,11 @@
     </section>
 
     <!-- Section 4: Katha Upanishad - The Chariot -->
-    <section class="sanskrit-section" id="chariotSection" style="background: #0a1628; padding: 6rem 0; position: relative; overflow-y: auto;">
+    <section class="sanskrit-section" id="chariotSection" style="background: #0a1628; padding: 0; position: relative; overflow: hidden; height: 100vh;">
         <!-- Background Video -->
-        <video autoplay muted loop playsinline id="chariotVideo" style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); opacity: 0.35; z-index: 0; object-fit: cover;">
+        <video autoplay muted loop playsinline id="chariotVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; z-index: 0; object-fit: contain;">
             <source src="pics/amrita didi/chariot_video.mp4" type="video/mp4">
         </video>
-        
-        <!-- Hover Spotlight Effect -->
-        <div id="chariotSpotlight" style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, transparent 70%); pointer-events: none; z-index: 1; opacity: 0; transition: opacity 0.3s ease; mix-blend-mode: screen;"></div>
-        
-        <!-- Dark Overlay -->
-        <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10, 22, 40, 0.70) 0%, rgba(10, 22, 40, 0.65) 50%, rgba(10, 22, 40, 0.70) 100%); z-index: 1; transition: opacity 0.3s ease;" id="chariotOverlay"></div>
         
         <div class="sanskrit-container reveal" style="max-width: 900px; margin: 0 auto; padding: 0 4rem; text-align: center; position: relative; z-index: 2; display: none;">
             <h2 class="chariot-hover-element" style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: #d4a574; margin-bottom: 1.5rem; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); transition: opacity 0.3s ease; cursor: pointer;">The Chariot of Life</h2>
