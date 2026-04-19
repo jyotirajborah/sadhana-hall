@@ -1961,9 +1961,14 @@
     </section>
 
     <!-- Section 4: Katha Upanishad - The Chariot -->
-    <section class="sanskrit-section" id="chariotSection" style="background: linear-gradient(180deg, #2a3a4a 0%, #1a2a3a 50%, #2a3a4a 100%); padding: 0; position: relative; overflow: hidden; height: 100vh;">
-        <!-- Background Video -->
-        <video autoplay muted loop playsinline id="chariotVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; z-index: 0; object-fit: contain;">
+    <section class="sanskrit-section" id="chariotSection" style="background: #1a2a3a; padding: 0; position: relative; overflow: hidden; height: 100vh;">
+        <!-- Blurred Background Video (scaled and blurred) -->
+        <video autoplay muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; z-index: 0; object-fit: cover; filter: blur(40px); transform: scale(1.1);">
+            <source src="pics/amrita didi/chariot_video.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Main Video (centered, not cropped) -->
+        <video autoplay muted loop playsinline id="chariotVideo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 1; z-index: 1; object-fit: contain;">
             <source src="pics/amrita didi/chariot_video.mp4" type="video/mp4">
         </video>
         
