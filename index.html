@@ -1975,7 +1975,7 @@
         </video>
         
         <!-- Overlay (similar to hero section) -->
-        <div style="position: absolute; inset: 0; background: rgba(10, 22, 40, 0.45); z-index: 2;"></div>
+        <div id="chariotOverlay" style="position: absolute; inset: 0; background: rgba(10, 22, 40, 0.45); z-index: 2;"></div>
         
         <div class="sanskrit-container reveal" style="max-width: 900px; margin: 0 auto; padding: 0 4rem; text-align: center; position: relative; z-index: 3; display: none;">
             <h2 class="chariot-hover-element" style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: #d4a574; margin-bottom: 1.5rem; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); transition: opacity 0.3s ease; cursor: pointer;">The Chariot of Life</h2>
@@ -3757,13 +3757,13 @@
             chariotSection.addEventListener('mouseenter', function() {
                 chariotSpotlight.style.opacity = '1';
                 chariotVideo.style.opacity = '0.45'; // Increase by 10% from 0.35 to 0.45
-                chariotOverlay.style.opacity = '0.65'; // Reduce overlay darkness to 65%
+                // Overlay stays at same opacity - no change on hover
             });
 
             chariotSection.addEventListener('mouseleave', function() {
                 chariotSpotlight.style.opacity = '0';
                 chariotVideo.style.opacity = '0.35'; // Return to normal
-                chariotOverlay.style.opacity = '1'; // Restore overlay
+                // Overlay stays at same opacity - no change on hover
             });
 
             chariotSection.addEventListener('mousemove', function(e) {
