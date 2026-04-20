@@ -850,17 +850,13 @@
             border-color: var(--gold) !important;
         }
         
-        /* Meditation Hall Hover Overlay */
-        .meditation-hall-container:hover .meditation-hall-overlay {
+        /* Meditation Hall Overlay - Click to toggle */
+        .meditation-hall-overlay.active {
             opacity: 1 !important;
             pointer-events: auto !important;
         }
         
-        .meditation-hall-container:hover img {
-            transform: scale(1.05);
-        }
-        
-        .meditation-hall-container:hover .component-text-content {
+        .component-text-content.hidden {
             opacity: 0 !important;
         }
         
@@ -872,6 +868,12 @@
         
         .meditation-hall-overlay::-webkit-scrollbar {
             display: none; /* Chrome, Safari, Opera */
+        }
+        
+        /* Button hover effect */
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(212, 165, 116, 0.4) !important;
         }
 
         /* Back to Top Button */
@@ -2024,7 +2026,7 @@
                          alt="Meditation Hall" 
                          class="component-image">
                 </div>
-                <div style="position: relative; padding: 0; cursor: pointer;" class="meditation-hall-container">
+                <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Meditation Hall</h3>
                         
@@ -2038,10 +2040,20 @@
                         <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--slate); margin-bottom: 1.5rem;">
                             A serene space designed for daily guided meditation sessions and Rupadhyana workshops, fostering inner peace and mindfulness, which is a need of the hour catering mental wellness. This will also prove to be a blessing for the community and their engagements throughout the year.
                         </p>
+                        
+                        <!-- Know More Button -->
+                        <button onclick="toggleComponentDetails(this)" style="background: linear-gradient(135deg, var(--gold), var(--bronze)); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);">
+                            Know More
+                        </button>
                     </div>
                     
                     <!-- Overlay Content (same as image overlay) -->
                     <div class="meditation-hall-overlay" style="position: absolute; inset: 0; background: rgba(30, 30, 30, 0.92); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; overflow-y: auto; padding: 2rem;">
+                        <!-- Close Button -->
+                        <button onclick="toggleComponentDetails(this)" style="position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.1); border: 2px solid var(--gold); color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s ease; z-index: 10;">
+                            ×
+                        </button>
+                        
                         <!-- Capacity & Beneficiaries -->
                         <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                             <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 12px; border: 2px solid rgba(212, 165, 116, 0.3);">
@@ -3864,6 +3876,25 @@
                     behavior: 'smooth'
                 });
             });
+        }
+        
+        // Toggle component details overlay
+        function toggleComponentDetails(button) {
+            const container = button.closest('.meditation-hall-container');
+            const overlay = container.querySelector('.meditation-hall-overlay');
+            const textContent = container.querySelector('.component-text-content');
+            
+            if (overlay.classList.contains('active')) {
+                // Hide overlay, show text
+                overlay.classList.remove('active');
+                textContent.classList.remove('hidden');
+                button.textContent = 'Know More';
+            } else {
+                // Show overlay, hide text
+                overlay.classList.add('active');
+                textContent.classList.add('hidden');
+                button.textContent = 'Show Less';
+            }
         }
     </script>
 </body>
