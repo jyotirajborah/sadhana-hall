@@ -2142,7 +2142,7 @@
 
             <!-- Component 2: Text Left, Image Right -->
             <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
-                <div style="position: relative; padding: 0; cursor: pointer;" class="meditation-hall-container">
+                <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Community Kitchen & Dining</h3>
                         
@@ -2156,10 +2156,20 @@
                         <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--slate); margin-bottom: 1.5rem;">
                             A welcoming communal dining hall where residents and visitors gather to share nutritious vegetarian meals prepared with love and mindfulness. The kitchen operates on principles of sustainability, zero waste, and conscious eating, fostering a sense of unity and gratitude among all who dine together.
                         </p>
+                        
+                        <!-- Know More Button -->
+                        <button onclick="toggleComponentDetails(this)" style="background: linear-gradient(135deg, var(--gold), var(--bronze)); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);">
+                            Know More
+                        </button>
                     </div>
                     
                     <!-- Overlay Content (same as image overlay) -->
                     <div class="meditation-hall-overlay" style="position: absolute; inset: 0; background: rgba(30, 30, 30, 0.92); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; overflow-y: auto; padding: 2rem;">
+                        <!-- Close Button -->
+                        <button onclick="toggleComponentDetails(this)" style="position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.1); border: 2px solid var(--gold); color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s ease; z-index: 10;">
+                            ×
+                        </button>
+                        
                         <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                             <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 12px; border: 2px solid rgba(212, 165, 116, 0.3);">
                                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
@@ -2340,7 +2350,7 @@
                         </div>
                     </div>
                 </div>
-                <div style="position: relative; padding: 0; cursor: pointer;" class="meditation-hall-container">
+                <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Music & Cultural Academy</h3>
                         
@@ -2354,10 +2364,20 @@
                         <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--slate); margin-bottom: 1.5rem;">
                             A dedicated center for learning Hindustani classical music, traditional instruments, and cultural arts. The academy offers structured courses from beginner to advanced levels, fostering artistic excellence while maintaining the authenticity of ancient musical traditions and cultural practices.
                         </p>
+                        
+                        <!-- Know More Button -->
+                        <button onclick="toggleComponentDetails(this)" style="background: linear-gradient(135deg, var(--gold), var(--bronze)); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);">
+                            Know More
+                        </button>
                     </div>
                     
                     <!-- Overlay Content (same as image overlay) -->
                     <div class="meditation-hall-overlay" style="position: absolute; inset: 0; background: rgba(30, 30, 30, 0.92); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; overflow-y: auto; padding: 2rem;">
+                        <!-- Close Button -->
+                        <button onclick="toggleComponentDetails(this)" style="position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.1); border: 2px solid var(--gold); color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s ease; z-index: 10;">
+                            ×
+                        </button>
+                        
                         <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                             <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 12px; border: 2px solid rgba(212, 165, 116, 0.3);">
                                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
@@ -2443,7 +2463,7 @@
 
             <!-- Component 4: Text Left, Image Right -->
             <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
-                <div style="position: relative; padding: 0; cursor: pointer;" class="meditation-hall-container">
+                <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Yoga Research & Training Centre</h3>
                         
@@ -2457,10 +2477,20 @@
                         <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--slate); margin-bottom: 1.5rem;">
                             A comprehensive facility dedicated to yoga practice, research, and instructor certification. The center offers daily sessions, specialized workshops, and teacher training programs while conducting scientific studies on yoga's therapeutic benefits for physical and mental wellness.
                         </p>
+                        
+                        <!-- Know More Button -->
+                        <button onclick="toggleComponentDetails(this)" style="background: linear-gradient(135deg, var(--gold), var(--bronze)); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);">
+                            Know More
+                        </button>
                     </div>
                     
                     <!-- Overlay Content (same as image overlay) -->
                     <div class="meditation-hall-overlay" style="position: absolute; inset: 0; background: rgba(30, 30, 30, 0.92); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; overflow-y: auto; padding: 2rem;">
+                        <!-- Close Button -->
+                        <button onclick="toggleComponentDetails(this)" style="position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.1); border: 2px solid var(--gold); color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s ease; z-index: 10;">
+                            ×
+                        </button>
+                        
                         <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                             <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 12px; border: 2px solid rgba(212, 165, 116, 0.3);">
                                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
@@ -2555,7 +2585,7 @@
                          alt="Library" 
                          class="component-image">
                 </div>
-                <div style="position: relative; padding: 0; cursor: pointer;" class="meditation-hall-container">
+                <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Spiritual Library</h3>
                         
@@ -2569,10 +2599,20 @@
                         <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--slate); margin-bottom: 1.5rem;">
                             A curated collection of spiritual texts, scriptures, and resources spanning ancient wisdom to modern interpretations. The library serves as a sanctuary for study, contemplation, and intellectual exploration of spiritual traditions, offering both physical and digital resources for seekers at all levels.
                         </p>
+                        
+                        <!-- Know More Button -->
+                        <button onclick="toggleComponentDetails(this)" style="background: linear-gradient(135deg, var(--gold), var(--bronze)); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);">
+                            Know More
+                        </button>
                     </div>
                     
                     <!-- Overlay Content -->
                     <div class="meditation-hall-overlay" style="position: absolute; inset: 0; background: rgba(30, 30, 30, 0.92); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; overflow-y: auto; padding: 2rem;">
+                        <!-- Close Button -->
+                        <button onclick="toggleComponentDetails(this)" style="position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.1); border: 2px solid var(--gold); color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s ease; z-index: 10;">
+                            ×
+                        </button>
+                        
                         <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                             <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 12px; border: 2px solid rgba(212, 165, 116, 0.3);">
                                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
@@ -2657,7 +2697,7 @@
 
             <!-- Component 6: Text Left, Image Right -->
             <div class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
-                <div style="position: relative; padding: 0; cursor: pointer;" class="meditation-hall-container">
+                <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Youth Development Centre</h3>
                         
@@ -2671,10 +2711,20 @@
                         <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--slate); margin-bottom: 1.5rem;">
                             A transformative space dedicated to holistic youth development through personality enhancement, stress management, leadership training, and value education. The center addresses modern challenges faced by young people while building character, confidence, and conscious living skills.
                         </p>
+                        
+                        <!-- Know More Button -->
+                        <button onclick="toggleComponentDetails(this)" style="background: linear-gradient(135deg, var(--gold), var(--bronze)); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);">
+                            Know More
+                        </button>
                     </div>
                     
                     <!-- Overlay Content -->
                     <div class="meditation-hall-overlay" style="position: absolute; inset: 0; background: rgba(30, 30, 30, 0.92); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; overflow-y: auto; padding: 2rem;">
+                        <!-- Close Button -->
+                        <button onclick="toggleComponentDetails(this)" style="position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.1); border: 2px solid var(--gold); color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s ease; z-index: 10;">
+                            ×
+                        </button>
+                        
                         <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                             <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 12px; border: 2px solid rgba(212, 165, 116, 0.3);">
                                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
@@ -2772,7 +2822,7 @@
                          alt="Residential" 
                          class="component-image">
                 </div>
-                <div style="position: relative; padding: 0; cursor: pointer;" class="meditation-hall-container">
+                <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Residential Facilities</h3>
                         
@@ -2786,10 +2836,20 @@
                         <p style="font-size: 1.0625rem; line-height: 1.8; color: var(--slate); margin-bottom: 1.5rem;">
                             Comfortable and well-maintained accommodation for students, instructors, and visitors participating in extended programs. The residential facilities offer a peaceful living environment conducive to study, practice, and community living, with modern amenities ensuring comfort during long-term stays.
                         </p>
+                        
+                        <!-- Know More Button -->
+                        <button onclick="toggleComponentDetails(this)" style="background: linear-gradient(135deg, var(--gold), var(--bronze)); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);">
+                            Know More
+                        </button>
                     </div>
                     
                     <!-- Overlay Content -->
                     <div class="meditation-hall-overlay" style="position: absolute; inset: 0; background: rgba(30, 30, 30, 0.92); opacity: 0; transition: opacity 0.5s ease; pointer-events: none; overflow-y: auto; padding: 2rem;">
+                        <!-- Close Button -->
+                        <button onclick="toggleComponentDetails(this)" style="position: absolute; top: 1rem; right: 1rem; background: rgba(255, 255, 255, 0.1); border: 2px solid var(--gold); color: white; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s ease; z-index: 10;">
+                            ×
+                        </button>
+                        
                         <div style="display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                             <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); padding: 1.25rem; border-radius: 12px; border: 2px solid rgba(212, 165, 116, 0.3);">
                                 <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem;">
@@ -3899,6 +3959,7 @@
     </script>
 </body>
 </html>
+
 
 
 
