@@ -1715,6 +1715,16 @@
             }
         }
 
+        /* Shimmer/Shine effect */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
         /* Text Hover Effects */
         h1, h2, h3, h4, h5, h6 {
             transition: all 0.3s ease;
@@ -3872,7 +3882,7 @@
 
             <!-- Closing One-liner -->
             <div class="reveal" style="margin-top: 4rem; text-align: center;">
-                <p style="font-family: 'Libre Baskerville', serif; font-size: 1.75rem; line-height: 1.8; color: var(--gold); margin: 0; font-weight: 400; animation: fadeInScale 1.5s ease-out;">
+                <p style="font-family: 'Libre Baskerville', serif; font-size: 1.75rem; line-height: 1.8; color: var(--gold); margin: 0; font-weight: 400; animation: fadeInScale 1.5s ease-out; position: relative; display: inline-block; background: linear-gradient(90deg, var(--gold) 0%, #f5e6d3 50%, var(--gold) 100%); background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: fadeInScale 1.5s ease-out, shimmer 3s ease-in-out infinite 2s;">
                     "Your contribution today plants the seeds of transformation for generations to come."
                 </p>
             </div>
