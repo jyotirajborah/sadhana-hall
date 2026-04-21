@@ -34,12 +34,8 @@
             --midnight: #0a1628;
             --navy: #1a2f4a;
             --slate: #2d4a6b;
-            --gold: #7cb342;
-            --bronze: #558b2f;
-            --teal: #26a69a;
-            --teal-dark: #00897b;
-            --blue: #29b6f6;
-            --blue-dark: #0288d1;
+            --gold: #d4a574;
+            --bronze: #b8956a;
             --cream: #f5f1e8;
             --sand: #e8dcc8;
             --sage: #8b9d83;
@@ -721,15 +717,15 @@
         }
 
         .chevron-step:nth-child(1) {
-            background: linear-gradient(135deg, #7cb342, #558b2f);
+            background: linear-gradient(135deg, #d4a574, #b8956a);
         }
 
         .chevron-step:nth-child(2) {
-            background: linear-gradient(135deg, #26a69a, #00897b);
+            background: linear-gradient(135deg, #c9985e, #a67c52);
         }
 
         .chevron-step:nth-child(3) {
-            background: linear-gradient(135deg, #29b6f6, #0288d1);
+            background: linear-gradient(135deg, #b8956a, #9d7d4f);
         }
 
         .chevron-step:hover {
@@ -1475,13 +1471,56 @@
 
         .reveal {
             opacity: 0;
-            transform: translateY(60px) scale(0.95);
+            transform: translateY(80px);
             transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
+        }
+        
+        /* Component row parallax from bottom */
+        .component-row {
+            opacity: 0;
+            transform: translateY(120px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .component-row.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Stagger animation for component children */
+        .component-row .component-text-content,
+        .component-row .component-image {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        
+        .component-row.active .component-text-content,
+        .component-row.active .component-image {
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .component-row.active .component-text-content {
+            animation-delay: 0.2s;
+        }
+        
+        .component-row.active .component-image {
+            animation-delay: 0.3s;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Text Hover Effects */
@@ -2198,7 +2237,7 @@
             <div class="horizontal-cards-container" style="display: flex; gap: 1.5rem; margin-top: 2.5rem; padding: 2rem 0; justify-content: space-between; align-items: stretch;">
                 <div class="need-card" style="flex: 1; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
                     <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(10, 22, 40, 0.1); background: white; height: 100%;">
-                        <img src="pics/amrita didi/anxity .webp" alt="Youth Stress" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
+                        <img src="pics/updated/1st final .jpeg" alt="Youth Stress" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
                         <div style="padding: 2rem;">
                             <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.5rem; color: var(--midnight); margin-bottom: 1rem;">Rising Youth Stress and Anxiety</h3>
                             <p style="font-size: 1rem; color: var(--slate); line-height: 1.7;">Modern lifestyle challenges are affecting mental health across all age groups, requiring holistic approaches to wellness.</p>
@@ -2207,7 +2246,7 @@
                 </div>
                 <div class="need-card" style="flex: 1; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
                     <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(10, 22, 40, 0.1); background: white; height: 100%;">
-                        <img src="pics/amrita didi/mobile screen_.webp" alt="Digital Addiction" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
+                        <img src="pics/updated/2nd.jpg" alt="Digital Addiction" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
                         <div style="padding: 2rem;">
                             <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.5rem; color: var(--midnight); margin-bottom: 1rem;">Digital Addiction and Emotional Imbalance</h3>
                             <p style="font-size: 1rem; color: var(--slate); line-height: 1.7;">Excessive screen time and digital dependency are creating emotional imbalance and disconnection from authentic self-awareness.</p>
@@ -2216,7 +2255,7 @@
                 </div>
                 <div class="need-card" style="flex: 1; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
                     <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(10, 22, 40, 0.1); background: white; height: 100%;">
-                        <img src="pics/amrita didi/maditation 2.webp" alt="Meditation Education" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
+                        <img src="pics/updated/3rd.jpg" alt="Meditation Education" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
                         <div style="padding: 2rem;">
                             <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.5rem; color: var(--midnight); margin-bottom: 1rem;">Lack of Structured Meditation Education</h3>
                             <p style="font-size: 1rem; color: var(--slate); line-height: 1.7;">Despite growing interest in mindfulness, few institutions offer systematic meditation training accessible to all.</p>
@@ -2225,7 +2264,7 @@
                 </div>
                 <div class="need-card" style="flex: 1; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer;">
                     <div style="position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 10px 30px rgba(10, 22, 40, 0.1); background: white; height: 100%;">
-                        <img src="pics/amrita didi/lost gen.webp" alt="Indian Arts" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
+                        <img src="pics/updated/4th.jpg" alt="Indian Arts" style="width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.4s ease;">
                         <div style="padding: 2rem;">
                             <h3 style="font-family: 'Libre Baskerville', serif; font-size: 1.5rem; color: var(--midnight); margin-bottom: 1rem;">Declining Engagement with Indian Arts and Values</h3>
                             <p style="font-size: 1rem; color: var(--slate); line-height: 1.7;">Traditional Indian arts and wisdom traditions face declining engagement among younger generations.</p>
@@ -2418,7 +2457,7 @@
             </div>
 
             <!-- Component 2: Text Left, Image Right -->
-            <div id="community-kitchen" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
+            <div id="community-kitchen" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
                 <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Community Kitchen & Dining</h3>
@@ -2535,7 +2574,7 @@
             </div>
 
             <!-- Component 3: Image Left, Text Right -->
-            <div id="music-academy" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
+            <div id="music-academy" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
                 <div style="overflow: hidden; border-radius: 8px;">
                     <img src="pics/culture.jpeg" 
                          alt="Music Academy" 
@@ -2735,7 +2774,7 @@
             </div>
 
             <!-- Component 4: Text Left, Image Right -->
-            <div id="yoga-centre" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
+            <div id="yoga-centre" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
                 <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Yoga Research & Training Centre</h3>
@@ -2843,14 +2882,14 @@
                     </div>
                 </div>
                 <div style="overflow: hidden; border-radius: 8px;">
-                    <img src="pics/amrita didi/yoga  (1) (1) (1).jpg" 
+                    <img src="pics/updated/yoga .png" 
                          alt="Yoga Centre" 
                          class="component-image">
                 </div>
             </div>
 
             <!-- Component 5: Image Left, Text Right -->
-            <div id="spiritual-library" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
+            <div id="spiritual-library" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
                 <div style="overflow: hidden; border-radius: 8px;">
                     <img src="pics/amrita didi/library2.jpg" 
                          alt="Library" 
@@ -2965,7 +3004,7 @@
             </div>
 
             <!-- Component 6: Text Left, Image Right -->
-            <div id="youth-development" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
+            <div id="youth-development" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
                 <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Youth Development Centre</h3>
@@ -3083,7 +3122,7 @@
             </div>
 
             <!-- Component 7: Image Left, Text Right -->
-            <div id="residential-facilities" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
+            <div id="residential-facilities" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
                 <div style="overflow: hidden; border-radius: 8px;">
                     <img src="pics/real/A2.jpg" 
                          alt="Residential" 
@@ -3920,7 +3959,7 @@
             scrollProgress.style.width = scrolled + '%';
         });
 
-        // Reveal on scroll
+        // Reveal on scroll with enhanced visibility
         const reveals = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -3929,8 +3968,8 @@
                 }
             });
         }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
         });
 
         reveals.forEach(reveal => {
