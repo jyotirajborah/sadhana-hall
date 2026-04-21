@@ -204,6 +204,25 @@
             background: var(--gold);
         }
 
+        /* Menu Backdrop */
+        .menu-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .menu-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
         /* Menu Overlay - Slide from Right */
         .menu-overlay {
             position: fixed;
@@ -2321,6 +2340,7 @@
     </nav>
 
     <!-- Hamburger Menu Overlay -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
     <div class="menu-overlay" id="menuOverlay">
         <button class="menu-close" id="menuClose" aria-label="Close Menu">&times;</button>
         <nav class="menu-nav">
@@ -4502,34 +4522,42 @@
         // Hamburger Menu Functionality
         const hamburgerMenu = document.getElementById('hamburgerMenu');
         const menuOverlay = document.getElementById('menuOverlay');
+        const menuBackdrop = document.getElementById('menuBackdrop');
         const menuClose = document.getElementById('menuClose');
         const menuLinks = document.querySelectorAll('.menu-link');
 
         // Open menu
         hamburgerMenu.addEventListener('click', () => {
             menuOverlay.classList.add('active');
+            menuBackdrop.classList.add('active');
             document.body.style.overflow = 'hidden';
         });
 
-        // Close menu
-        menuClose.addEventListener('click', () => {
+        // Close menu function
+        function closeMenu() {
             menuOverlay.classList.remove('active');
+            menuBackdrop.classList.remove('active');
             document.body.style.overflow = '';
+        }
+
+        // Close menu with X button
+        menuClose.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeMenu();
         });
+
+        // Close menu when clicking backdrop
+        menuBackdrop.addEventListener('click', closeMenu);
 
         // Close menu when clicking a link
         menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+            link.addEventListener('click', closeMenu);
         });
 
-        // Close menu when clicking outside
-        menuOverlay.addEventListener('click', (e) => {
-            if (e.target === menuOverlay) {
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+                closeMenu();
             }
         });
     </script>
