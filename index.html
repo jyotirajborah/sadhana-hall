@@ -1480,42 +1480,60 @@
             transform: translateY(0);
         }
         
-        /* Component row parallax from bottom */
+        /* Component row stacking parallax effect */
         .component-row {
-            opacity: 0 !important;
-            transform: translateY(150px) !important;
-            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: sticky;
+            top: 80px;
+            background: var(--cream);
+            padding: 3rem 0;
+            margin-bottom: -2rem;
+            z-index: 1;
+        }
+        
+        .component-row:nth-child(2) { z-index: 2; }
+        .component-row:nth-child(3) { z-index: 3; }
+        .component-row:nth-child(4) { z-index: 4; }
+        .component-row:nth-child(5) { z-index: 5; }
+        .component-row:nth-child(6) { z-index: 6; }
+        .component-row:nth-child(7) { z-index: 7; }
+        .component-row:nth-child(8) { z-index: 8; }
+        
+        /* Fade in animation for components */
+        .component-row {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
         
         .component-row.active {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+            opacity: 1;
+            transform: translateY(0);
         }
         
         /* Stagger animation for component children */
         .component-row .component-text-content,
         .component-row .component-image {
             opacity: 0;
-            transform: translateY(80px);
+            transform: translateY(30px);
         }
         
         .component-row.active .component-text-content,
         .component-row.active .component-image {
-            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
         
         .component-row.active .component-text-content {
-            animation-delay: 0.3s;
+            animation-delay: 0.2s;
         }
         
         .component-row.active .component-image {
-            animation-delay: 0.5s;
+            animation-delay: 0.3s;
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(80px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -2457,7 +2475,7 @@
             </div>
 
             <!-- Component 2: Text Left, Image Right -->
-            <div id="community-kitchen" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 1.5rem;">
+            <div id="community-kitchen" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
                 <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Community Kitchen & Dining</h3>
@@ -2574,7 +2592,7 @@
             </div>
 
             <!-- Component 3: Image Left, Text Right -->
-            <div id="music-academy" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 1.5rem;">
+            <div id="music-academy" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
                 <div style="overflow: hidden; border-radius: 8px;">
                     <img src="pics/culture.jpeg" 
                          alt="Music Academy" 
@@ -2774,7 +2792,7 @@
             </div>
 
             <!-- Component 4: Text Left, Image Right -->
-            <div id="yoga-centre" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 1.5rem;">
+            <div id="yoga-centre" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
                 <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Yoga Research & Training Centre</h3>
@@ -2889,7 +2907,7 @@
             </div>
 
             <!-- Component 5: Image Left, Text Right -->
-            <div id="spiritual-library" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 1.5rem;">
+            <div id="spiritual-library" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
                 <div style="overflow: hidden; border-radius: 8px;">
                     <img src="pics/amrita didi/library2.jpg" 
                          alt="Library" 
@@ -3004,7 +3022,7 @@
             </div>
 
             <!-- Component 6: Text Left, Image Right -->
-            <div id="youth-development" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 1.5rem;">
+            <div id="youth-development" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
                 <div style="position: relative; padding: 0;" class="meditation-hall-container">
                     <div class="component-text-content" style="transition: opacity 0.5s ease;">
                         <h3 style="font-family: 'Libre Baskerville', serif; font-size: 2rem; color: var(--midnight); margin-bottom: 1.5rem; margin-top: 0;">Youth Development Centre</h3>
@@ -3122,7 +3140,7 @@
             </div>
 
             <!-- Component 7: Image Left, Text Right -->
-            <div id="residential-facilities" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 1.5rem;">
+            <div id="residential-facilities" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
                 <div style="overflow: hidden; border-radius: 8px;">
                     <img src="pics/real/A2.jpg" 
                          alt="Residential" 
