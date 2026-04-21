@@ -1482,40 +1482,40 @@
         
         /* Component row parallax from bottom */
         .component-row {
-            opacity: 0;
-            transform: translateY(120px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0 !important;
+            transform: translateY(150px) !important;
+            transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
         
         .component-row.active {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1 !important;
+            transform: translateY(0) !important;
         }
         
         /* Stagger animation for component children */
         .component-row .component-text-content,
         .component-row .component-image {
             opacity: 0;
-            transform: translateY(60px);
+            transform: translateY(80px);
         }
         
         .component-row.active .component-text-content,
         .component-row.active .component-image {
-            animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
         
         .component-row.active .component-text-content {
-            animation-delay: 0.2s;
+            animation-delay: 0.3s;
         }
         
         .component-row.active .component-image {
-            animation-delay: 0.3s;
+            animation-delay: 0.5s;
         }
         
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(60px);
+                transform: translateY(80px);
             }
             to {
                 opacity: 1;
@@ -3968,8 +3968,8 @@
                 }
             });
         }, {
-            threshold: 0.2,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
         });
 
         reveals.forEach(reveal => {
