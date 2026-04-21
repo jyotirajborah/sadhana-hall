@@ -1925,6 +1925,14 @@
                 grid-template-columns: 1fr !important;
                 gap: 2rem !important;
                 margin-top: 3rem !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            
+            /* Image always comes first on mobile */
+            .component-row > div:has(img),
+            .component-row > div > img {
+                order: -1 !important;
             }
             
             .component-image {
