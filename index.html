@@ -1950,7 +1950,7 @@
             <div class="dot-nav-dot"></div>
             <div class="dot-nav-label">Home</div>
         </div>
-        <div class="dot-nav-item" data-section="stats-bar">
+        <div class="dot-nav-item" data-section="governance">
             <div class="dot-nav-dot"></div>
             <div class="dot-nav-label">Governance</div>
         </div>
@@ -1973,6 +1973,18 @@
         <div class="dot-nav-item" data-section="impact">
             <div class="dot-nav-dot"></div>
             <div class="dot-nav-label">Impact</div>
+        </div>
+        <div class="dot-nav-item" data-section="support">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">Support</div>
+        </div>
+        <div class="dot-nav-item" data-section="implementation">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">Implementation</div>
+        </div>
+        <div class="dot-nav-item" data-section="focus">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">Focus Areas</div>
         </div>
     </div>
 
@@ -2000,7 +2012,7 @@
     </section>
 
     <!-- Section 2: Governance -->
-    <section class="stats-bar" style="position: relative; overflow: hidden;">
+    <section class="stats-bar" id="governance" style="position: relative; overflow: hidden;">
         <h2 class="governance-title" style="font-family: 'Libre Baskerville', serif; font-size: 2.5rem; color: var(--gold); text-align: center; margin: 0; position: absolute; top: 50%; left: 100%; transform: translate(0, -50%); transition: left 0.6s ease; white-space: nowrap; z-index: 10; pointer-events: none;">Credibility and Governance</h2>
         <div class="stats-container" style="flex-direction: row; gap: 2rem;">
             <div class="stat-item reveal">
@@ -3291,7 +3303,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="cta-section" style="position: relative; overflow: hidden;">
+    <section class="cta-section" id="support" style="position: relative; overflow: hidden;">
         <!-- Left M3 Motif (50% visible, rotating counter-clockwise) -->
         <div class="motif-rotate-left" style="position: absolute; left: -400px; top: 50%; transform: translateY(-50%); width: 800px; height: 800px; opacity: 0.15; z-index: 0;">
             <img src="motiff/M3.png" alt="" style="width: 100%; height: 100%; object-fit: contain;">
@@ -3331,7 +3343,7 @@
     </section>
 
     <!-- Section 9: Implementation Plan -->
-    <section class="programs" style="background: var(--cream);">
+    <section class="programs" id="implementation" style="background: var(--cream);">
         <div class="programs-container">
             <div class="story-header reveal">
                 <h2 class="section-title">Implementation Plan</h2>
@@ -3414,7 +3426,7 @@
     </section>
 
     <!-- Section 10: Focus Areas -->
-    <section class="impact">
+    <section class="impact" id="focus">
         <div class="impact-container">
             <div class="story-header reveal">
                 <h2 class="section-title" style="color: white;">Focus Areas</h2>
@@ -4051,7 +4063,7 @@
 
         // Dot Navigation Functionality
         const dotNavItems = document.querySelectorAll('.dot-nav-item');
-        const sections = ['hero', 'stats-bar', 'story', 'chariotSection', 'components', 'programs', 'impact'];
+        const sections = ['hero', 'governance', 'story', 'chariotSection', 'components', 'programs', 'impact', 'support', 'implementation', 'focus'];
 
         // Click handler for dots
         dotNavItems.forEach(item => {
@@ -4061,8 +4073,8 @@
                 
                 if (sectionId === 'hero') {
                     targetElement = document.querySelector('.hero');
-                } else if (sectionId === 'stats-bar') {
-                    targetElement = document.querySelector('.stats-bar');
+                } else if (sectionId === 'governance') {
+                    targetElement = document.getElementById('governance');
                 } else {
                     targetElement = document.getElementById(sectionId);
                 }
@@ -4081,8 +4093,6 @@
                 let element;
                 if (sectionId === 'hero') {
                     element = document.querySelector('.hero');
-                } else if (sectionId === 'stats-bar') {
-                    element = document.querySelector('.stats-bar');
                 } else {
                     element = document.getElementById(sectionId);
                 }
