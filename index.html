@@ -204,27 +204,24 @@
             background: var(--gold);
         }
 
-        /* Menu Overlay - Modern Modal Style */
+        /* Menu Overlay - Slide from Right */
         .menu-overlay {
             position: fixed;
             top: 0;
-            left: 0;
+            right: -100%;
             width: 100%;
+            max-width: 450px;
             height: 100vh;
-            background: rgba(10, 22, 40, 0.95);
+            background: rgba(10, 22, 40, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1001;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
         }
 
         .menu-overlay.active {
-            opacity: 1;
-            visibility: visible;
+            right: 0;
         }
 
         .menu-close {
@@ -257,31 +254,7 @@
             flex-direction: column;
             align-items: stretch;
             gap: 0;
-            max-width: 500px;
-            width: 90%;
-            background: rgba(26, 47, 74, 0.8);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 3rem 2rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(212, 165, 116, 0.2);
-            transform: scale(0.9);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .menu-overlay.active .menu-nav {
-            transform: scale(1);
-        }
-
-        .menu-nav::before {
-            content: 'UPASANA';
-            font-family: 'Libre Baskerville', serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--gold);
-            text-align: right;
-            margin-bottom: 2rem;
-            letter-spacing: 0.05em;
+            padding: 6rem 2rem 3rem 2rem;
         }
 
         .menu-link {
@@ -1778,22 +1751,23 @@
                 font-size: 1.25rem !important;
             }
 
-            /* Hamburger Menu Modal on Mobile */
+            /* Hamburger Menu on Mobile */
+            .menu-overlay {
+                max-width: 100%;
+            }
+
             .menu-nav {
-                width: 95%;
-                max-width: none;
-                padding: 2rem 1rem;
-                border-radius: 15px;
+                padding: 5rem 1.5rem 2rem 1.5rem;
             }
 
             .menu-link {
                 font-size: 1rem;
-                padding: 0.875rem 1.5rem;
+                padding: 0.875rem 1.25rem;
             }
 
             .menu-close {
-                top: 1rem;
-                right: 1rem;
+                top: 1.5rem;
+                right: 1.5rem;
                 width: 45px;
                 height: 45px;
             }
