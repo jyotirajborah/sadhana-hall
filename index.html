@@ -30,6 +30,12 @@
         html {
             scroll-behavior: smooth;
             font-size: 16px;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        html::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
 
         body {
@@ -38,6 +44,12 @@
             color: var(--midnight);
             overflow-x: hidden;
             line-height: 1.6;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+
+        body::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
         }
 
         /* Custom Cursor */
