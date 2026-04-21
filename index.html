@@ -204,30 +204,35 @@
             background: var(--gold);
         }
 
-        /* Menu Overlay */
+        /* Menu Overlay - Modern Modal Style */
         .menu-overlay {
             position: fixed;
             top: 0;
-            right: -100%;
+            left: 0;
             width: 100%;
-            max-width: 400px;
             height: 100vh;
-            background: var(--midnight);
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1001;
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
         }
 
         .menu-overlay.active {
-            right: 0;
+            opacity: 1;
+            visibility: visible;
         }
 
         .menu-close {
             position: absolute;
-            top: 1.5rem;
-            right: 1.5rem;
-            width: 40px;
-            height: 40px;
+            top: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
             background: transparent;
             border: 2px solid var(--gold);
             color: white;
@@ -239,6 +244,7 @@
             justify-content: center;
             transition: all 0.3s ease;
             line-height: 1;
+            z-index: 10;
         }
 
         .menu-close:hover {
@@ -249,27 +255,47 @@
         .menu-nav {
             display: flex;
             flex-direction: column;
-            padding: 5rem 3rem;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 0;
+            max-width: 500px;
+            width: 90%;
+            background: rgba(26, 47, 74, 0.8);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-overlay.active .menu-nav {
+            transform: scale(1);
         }
 
         .menu-link {
             color: white;
             text-decoration: none;
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             font-weight: 500;
-            padding: 1rem 0;
+            padding: 1rem 2rem;
+            width: 100%;
+            text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
             position: relative;
         }
 
+        .menu-link:last-child {
+            border-bottom: none;
+        }
+
         .menu-link::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
             width: 0;
             height: 2px;
             background: var(--gold);
@@ -278,11 +304,11 @@
 
         .menu-link:hover {
             color: var(--gold);
-            padding-left: 1.5rem;
+            background: rgba(212, 165, 116, 0.1);
         }
 
         .menu-link:hover::before {
-            width: 1rem;
+            width: 80%;
         }
 
         /* Dot Navigation */
@@ -1729,7 +1755,7 @@
             /* Navigation */
             nav {
                 padding: 1rem 1.5rem !important;
-                justify-content: center !important;
+                justify-content: space-between !important;
             }
 
             .nav-menu {
@@ -1738,6 +1764,31 @@
             
             .logo {
                 font-size: 1.25rem !important;
+            }
+
+            /* Hamburger Menu Modal on Mobile */
+            .menu-nav {
+                width: 95%;
+                max-width: none;
+                padding: 2rem 1rem;
+                border-radius: 15px;
+            }
+
+            .menu-link {
+                font-size: 1rem;
+                padding: 0.875rem 1.5rem;
+            }
+
+            .menu-close {
+                top: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
+
+            .donate-btn {
+                font-size: 0.875rem;
+                padding: 0.5rem 1rem;
             }
 
             /* Hero Section */
