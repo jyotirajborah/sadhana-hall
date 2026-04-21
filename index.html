@@ -833,7 +833,26 @@
             flex: 1;
             background: linear-gradient(135deg, var(--gold), var(--bronze));
             padding: 3rem 3rem 3rem 4rem;
-            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%, 30px 50%);
+            clip-path: polygon(
+                0 0, 
+                calc(100% - 50px) 0, 
+                calc(100% - 35px) 10%,
+                calc(100% - 25px) 25%,
+                calc(100% - 15px) 40%,
+                100% 50%, 
+                calc(100% - 15px) 60%,
+                calc(100% - 25px) 75%,
+                calc(100% - 35px) 90%,
+                calc(100% - 50px) 100%, 
+                0 100%, 
+                35px 90%,
+                25px 75%,
+                15px 60%,
+                0px 50%,
+                15px 40%,
+                25px 25%,
+                35px 10%
+            );
             transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
@@ -841,12 +860,36 @@
         }
 
         .chevron-step:first-child {
-            clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 50%, calc(100% - 30px) 100%, 0 100%);
+            clip-path: polygon(
+                0 0, 
+                calc(100% - 50px) 0, 
+                calc(100% - 35px) 10%,
+                calc(100% - 25px) 25%,
+                calc(100% - 15px) 40%,
+                100% 50%, 
+                calc(100% - 15px) 60%,
+                calc(100% - 25px) 75%,
+                calc(100% - 35px) 90%,
+                calc(100% - 50px) 100%, 
+                0 100%
+            );
             padding-left: 3rem;
         }
 
         .chevron-step:last-child {
-            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 30px 50%);
+            clip-path: polygon(
+                0 0, 
+                100% 0, 
+                100% 100%, 
+                0 100%, 
+                35px 90%,
+                25px 75%,
+                15px 60%,
+                0px 50%,
+                15px 40%,
+                25px 25%,
+                35px 10%
+            );
             padding-right: 3rem;
         }
 
