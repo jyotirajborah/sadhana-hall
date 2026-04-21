@@ -169,6 +169,73 @@
             width: 100%;
         }
 
+        /* Dot Navigation */
+        .dot-nav {
+            position: fixed;
+            left: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .dot-nav-item {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dot-nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(212, 165, 116, 0.3);
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .dot-nav-item:hover .dot-nav-dot {
+            background: var(--gold);
+            transform: scale(1.3);
+        }
+
+        .dot-nav-item.active .dot-nav-dot {
+            background: var(--gold);
+            transform: scale(1.5);
+            box-shadow: 0 0 15px rgba(212, 165, 116, 0.6);
+        }
+
+        .dot-nav-label {
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--midnight);
+            color: var(--gold);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .dot-nav-item:hover .dot-nav-label {
+            opacity: 1;
+            left: 35px;
+        }
+
+        /* Hide dot nav on mobile */
+        @media (max-width: 768px) {
+            .dot-nav {
+                display: none;
+            }
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -1876,6 +1943,38 @@
             <li><a href="#impact">Impact</a></li>
         </ul>
     </nav>
+
+    <!-- Dot Navigation -->
+    <div class="dot-nav">
+        <div class="dot-nav-item" data-section="hero">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">Home</div>
+        </div>
+        <div class="dot-nav-item" data-section="stats-bar">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">Governance</div>
+        </div>
+        <div class="dot-nav-item" data-section="story">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">Why Needed</div>
+        </div>
+        <div class="dot-nav-item" data-section="chariotSection">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">The Chariot</div>
+        </div>
+        <div class="dot-nav-item" data-section="components">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">Components</div>
+        </div>
+        <div class="dot-nav-item" data-section="programs">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">Programs</div>
+        </div>
+        <div class="dot-nav-item" data-section="impact">
+            <div class="dot-nav-dot"></div>
+            <div class="dot-nav-label">Impact</div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -3949,6 +4048,67 @@
                 button.textContent = 'Show Less';
             }
         }
+
+        // Dot Navigation Functionality
+        const dotNavItems = document.querySelectorAll('.dot-nav-item');
+        const sections = ['hero', 'stats-bar', 'story', 'chariotSection', 'components', 'programs', 'impact'];
+
+        // Click handler for dots
+        dotNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const sectionId = this.getAttribute('data-section');
+                let targetElement;
+                
+                if (sectionId === 'hero') {
+                    targetElement = document.querySelector('.hero');
+                } else if (sectionId === 'stats-bar') {
+                    targetElement = document.querySelector('.stats-bar');
+                } else {
+                    targetElement = document.getElementById(sectionId);
+                }
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Update active dot based on scroll position
+        function updateActiveDot() {
+            let currentSection = 'hero';
+            
+            sections.forEach(sectionId => {
+                let element;
+                if (sectionId === 'hero') {
+                    element = document.querySelector('.hero');
+                } else if (sectionId === 'stats-bar') {
+                    element = document.querySelector('.stats-bar');
+                } else {
+                    element = document.getElementById(sectionId);
+                }
+                
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 2) {
+                        currentSection = sectionId;
+                    }
+                }
+            });
+            
+            // Update active class
+            dotNavItems.forEach(item => {
+                if (item.getAttribute('data-section') === currentSection) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // Update on scroll
+        window.addEventListener('scroll', updateActiveDot);
+        // Initial update
+        updateActiveDot();
     </script>
 </body>
 </html>
