@@ -46,6 +46,7 @@
             line-height: 1.6;
             scrollbar-width: none; /* Firefox */
             -ms-overflow-style: none; /* IE and Edge */
+            scroll-snap-type: y proximity;
         }
 
         body::-webkit-scrollbar {
@@ -712,6 +713,14 @@
         .programs {
             padding: 6rem 0;
             background: var(--cream);
+        }
+
+        /* Scroll Snap for Key Components */
+        #components .component-row {
+            scroll-snap-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .programs-container {
@@ -2146,7 +2155,7 @@
             </div>
 
             <!-- Component 1: Image Left, Text Right -->
-            <div id="meditation-hall" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 6rem;">
+            <div id="meditation-hall" class="component-row reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
                 <div style="overflow: hidden; border-radius: 8px;">
                     <img src="pics/dron view lotus .jpg" 
                          alt="Meditation Hall" 
