@@ -1853,7 +1853,11 @@
             }
             
             .stat-item {
-                text-align: center !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                gap: 0.75rem !important;
+                text-align: left !important;
             }
             
             .stat-item::after {
@@ -1861,11 +1865,14 @@
             }
             
             .stat-number {
-                font-size: 2.5rem !important;
+                font-size: 2rem !important;
+                margin: 0 !important;
             }
             
             .stat-label {
                 font-size: 0.8125rem !important;
+                text-align: left !important;
+                margin: 0 !important;
             }
 
             /* Section Spacing */
