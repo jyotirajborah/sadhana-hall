@@ -1352,6 +1352,47 @@
             letter-spacing: 0.1em;
         }
 
+        /* Circular Progress Timer */
+        .slide-timer {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+        }
+
+        .slide-timer svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide-timer-circle-bg {
+            fill: none;
+            stroke: rgba(212, 165, 116, 0.2);
+            stroke-width: 3;
+        }
+
+        .slide-timer-circle {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 138.23;
+            stroke-dashoffset: 138.23;
+            transition: stroke-dashoffset 0.1s linear;
+        }
+
+        .slide-timer-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--gold);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
         .impact-number {
             font-family: 'Libre Baskerville', serif;
             font-size: 5rem;
@@ -2298,6 +2339,22 @@
                 bottom: 1rem !important;
                 font-size: 0.875rem !important;
                 text-align: center !important;
+            }
+
+            .slide-timer {
+                bottom: 1rem !important;
+                right: 1rem !important;
+                width: 40px !important;
+                height: 40px !important;
+            }
+
+            .slide-timer-circle-bg,
+            .slide-timer-circle {
+                stroke-width: 2.5 !important;
+            }
+
+            .slide-timer-text {
+                font-size: 0.75rem !important;
             }
 
             /* Back to Top Button */
@@ -3855,6 +3912,14 @@
             <iframe class="lightbox-image" id="lightboxYoutube" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none; width: 80vw; height: 45vw; max-width: 1200px; max-height: 675px; pointer-events: auto;"></iframe>
             <button class="lightbox-nav lightbox-next" id="lightboxNext">›</button>
             <div class="lightbox-counter" id="lightboxCounter"></div>
+            <!-- Circular Progress Timer -->
+            <div class="slide-timer" id="slideTimer">
+                <svg viewBox="0 0 50 50">
+                    <circle class="slide-timer-circle-bg" cx="25" cy="25" r="22"></circle>
+                    <circle class="slide-timer-circle" id="timerCircle" cx="25" cy="25" r="22"></circle>
+                </svg>
+                <div class="slide-timer-text" id="timerText">5</div>
+            </div>
         </div>
     </div>
 
@@ -3902,9 +3967,7 @@
             { type: 'image', src: 'pics/03.webp' },
             { type: 'image', src: 'pics/04.webp' },
             { type: 'image', src: 'pics/05.webp' },
-            { type: 'image', src: 'pics/06.webp' },
-            { type: 'image', src: 'pics/07.webp' },
-            { type: 'image', src: 'pics/08.webp' }
+            { type: 'image', src: 'pics/upasana_front2.png' }
         ];
 
         let currentGalleryImages = galleryImages; // Active gallery images
@@ -3922,10 +3985,60 @@
         const lightboxPrev = document.getElementById('lightboxPrev');
         const lightboxNext = document.getElementById('lightboxNext');
         const lightboxCounter = document.getElementById('lightboxCounter');
+        const timerCircle = document.getElementById('timerCircle');
+        const timerText = document.getElementById('timerText');
+        const slideTimer = document.getElementById('slideTimer');
+
+        // Timer variables
+        const SLIDE_DURATION = 5000; // 5 seconds
+        let timerInterval = null;
+        let startTime = null;
+
+        // Update circular timer
+        function updateTimer() {
+            if (!startTime) return;
+            
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / SLIDE_DURATION, 1);
+            const circumference = 138.23; // 2 * PI * 22
+            const offset = circumference * (1 - progress);
+            
+            timerCircle.style.strokeDashoffset = offset;
+            
+            const secondsLeft = Math.ceil((SLIDE_DURATION - elapsed) / 1000);
+            timerText.textContent = secondsLeft;
+        }
+
+        // Reset timer
+        function resetTimer() {
+            startTime = Date.now();
+            timerCircle.style.strokeDashoffset = 138.23;
+            timerText.textContent = Math.ceil(SLIDE_DURATION / 1000);
+        }
+
+        // Start timer animation
+        function startTimer() {
+            stopTimer();
+            resetTimer();
+            timerInterval = setInterval(updateTimer, 50);
+        }
+
+        // Stop timer
+        function stopTimer() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                timerInterval = null;
+            }
+            startTime = null;
+        }
 
         // Auto-play function
         function startAutoPlay() {
             if (autoPlayInterval) return; // Don't start if already running
+            
+            // Start the timer animation
+            startTimer();
+            
             autoPlayInterval = setInterval(() => {
                 // Don't auto-advance if we're on the first slide AND it's a YouTube video
                 if (currentImageIndex === 0 && currentGalleryImages[0].type === 'youtube') {
@@ -3934,7 +4047,8 @@
                 
                 currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
                 showImage(currentImageIndex);
-            }, 3000); // Change image every 3 seconds
+                resetTimer(); // Reset timer for next slide
+            }, SLIDE_DURATION);
         }
 
         function stopAutoPlay() {
@@ -3942,6 +4056,7 @@
                 clearInterval(autoPlayInterval);
                 autoPlayInterval = null;
             }
+            stopTimer();
         }
 
         // Open lightbox
@@ -4032,11 +4147,15 @@
         lightboxPrev.addEventListener('click', function() {
             currentImageIndex = (currentImageIndex - 1 + currentGalleryImages.length) % currentGalleryImages.length;
             showImage(currentImageIndex);
+            stopAutoPlay();
+            startAutoPlay(); // Restart auto-play with fresh timer
         });
 
         lightboxNext.addEventListener('click', function() {
             currentImageIndex = (currentImageIndex + 1) % currentGalleryImages.length;
             showImage(currentImageIndex);
+            stopAutoPlay();
+            startAutoPlay(); // Restart auto-play with fresh timer
         });
 
         // Keyboard navigation
@@ -4076,6 +4195,7 @@
                 videoElement.src = item.src;
                 
                 lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
+                slideTimer.style.display = 'block'; // Show timer for videos
             } else if (item.type === 'youtube') {
                 // Show YouTube iframe, hide image and video
                 lightboxImage.style.display = 'none';
@@ -4089,6 +4209,7 @@
                 }
                 
                 lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
+                slideTimer.style.display = 'none'; // Hide timer for YouTube (doesn't auto-advance)
             } else {
                 // Show image, hide YouTube and video
                 lightboxYoutube.style.display = 'none';
@@ -4102,6 +4223,7 @@
                     lightboxCounter.textContent = `${index + 1} / ${currentGalleryImages.length}`;
                     lightboxImage.classList.remove('fade');
                 }, 250);
+                slideTimer.style.display = 'block'; // Show timer for images
             }
         }
 
