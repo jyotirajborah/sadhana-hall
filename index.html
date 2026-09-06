@@ -3896,7 +3896,7 @@
 
         // Gallery images (excluding chariot.jpeg) - First item is YouTube video
         const galleryImages = [
-            { type: 'video', src: 'video/new_upasana_video.mp4' },
+            { type: 'youtube', src: 'https://www.youtube.com/embed/GarMUeJCAow?autoplay=1&mute=1' },
             { type: 'image', src: 'pics/01.webp' },
             { type: 'image', src: 'pics/02.webp' },
             { type: 'image', src: 'pics/03.webp' },
@@ -3927,8 +3927,8 @@
         function startAutoPlay() {
             if (autoPlayInterval) return; // Don't start if already running
             autoPlayInterval = setInterval(() => {
-                // Don't auto-advance if we're on the first slide AND it's a video
-                if (currentImageIndex === 0 && currentGalleryImages[0].type === 'video') {
+                // Don't auto-advance if we're on the first slide AND it's a YouTube video
+                if (currentImageIndex === 0 && currentGalleryImages[0].type === 'youtube') {
                     return;
                 }
                 
